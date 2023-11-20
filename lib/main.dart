@@ -15,6 +15,8 @@ class MyApp extends StatelessWidget {
     return const MaterialApp(
       title: 'Movie App',
       home: SplashView(),
+
+      
     );
   }
 }
