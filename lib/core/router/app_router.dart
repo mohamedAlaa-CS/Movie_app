@@ -1,4 +1,6 @@
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:movie/features/home%20layout/presentation/manager/home_layout_cubit.dart';
 import 'package:movie/features/home%20layout/presentation/views/home_layout.dart';
 import 'package:movie/features/onboarding/presentation/view/onboarding_view.dart';
 import 'package:movie/features/splash/presentaion/view/spalsh_view.dart';
@@ -16,7 +18,10 @@ class AppRouter {
       ),
       GoRoute(
         path: HomeLayoutView.routeName,
-        builder: (context, state) =>  HomeLayoutView(),
+        builder: (context, state) => BlocProvider(
+          create: (context) => HomeLayoutCubit(),
+          child: const HomeLayoutView(),
+        ),
       ),
     ],
   );

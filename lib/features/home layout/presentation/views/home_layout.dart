@@ -11,7 +11,7 @@ class HomeLayoutView extends StatefulWidget {
 }
 
 class _HomeLayoutViewState extends State<HomeLayoutView> {
-  int select = 1;
+  int select = 0;
 
   @override
   Widget build(BuildContext context) {
