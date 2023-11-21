@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:movie/core/utils/assets.dart';
 import 'package:movie/core/utils/color.dart';
+import 'package:movie/features/onboarding/presentation/view/widget/page_view_item.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+
+import '../../data/model/onboarding_data_model.dart';
 
 class OnBoardingView extends StatefulWidget {
   static const String routeName = "/onboarding";
@@ -95,50 +98,4 @@ class _OnBoardingViewState extends State<OnBoardingView> {
       ),
     );
   }
-}
-
-class PageViewItem extends StatelessWidget {
-  const PageViewItem({
-    super.key,
-    required this.model,
-  });
-  final OnboardingData model;
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Expanded(child: Image(image: AssetImage(model.image))),
-        Text(
-          model.title,
-          style: const TextStyle(
-              color: kPrimaryColor, fontSize: 18, fontWeight: FontWeight.bold),
-        ),
-        const SizedBox(height: 15),
-        SizedBox(
-          width: MediaQuery.of(context).size.width / 1.4,
-          child: Text(
-            model.body,
-            style: TextStyle(
-                color: kPrimaryColor.withOpacity(0.8),
-                fontSize: 18,
-                fontWeight: FontWeight.bold),
-          ),
-        ),
-        const SizedBox(height: 40)
-      ],
-    );
-  }
-}
-
-class OnboardingData {
-  final String image;
-  final String title;
-  final String body;
-
-  OnboardingData({
-    required this.image,
-    required this.title,
-    required this.body,
-  });
 }
