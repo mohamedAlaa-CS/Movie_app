@@ -11,7 +11,7 @@ class AppRouter {
       ),
       GoRoute(
         path: OnBoardingView.routeName,
-        builder: (context, state) => const OnBoardingView(),
+        builder: (context, state) =>  OnBoardingView(),
       ),
     ],
   );
