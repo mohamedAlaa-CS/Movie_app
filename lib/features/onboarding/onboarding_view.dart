@@ -3,8 +3,16 @@ import 'package:movie/core/utils/assets.dart';
 import 'package:movie/core/utils/color.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
-class OnBoardingView extends StatelessWidget {
+class OnBoardingView extends StatefulWidget {
   static const String routeName = "/onboarding";
+
+  const OnBoardingView({super.key});
+
+  @override
+  State<OnBoardingView> createState() => _OnBoardingViewState();
+}
+
+class _OnBoardingViewState extends State<OnBoardingView> {
   List<OnboardingData> onBoarding = [
     OnboardingData(
         image: Assets.onboarding_1,
@@ -17,8 +25,11 @@ class OnBoardingView extends StatelessWidget {
         body:
             'Effortlessly book movies and enjoy smooth access to the world of cinema with our user-friendly app.'),
   ];
+
+  bool last = false;
+
   var pageController = PageController();
-  OnBoardingView({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,7 +38,7 @@ class OnBoardingView extends StatelessWidget {
           TextButton(
               onPressed: () {},
               child: const Text(
-                'SKIP',
+                'SKIP ',
                 style: TextStyle(color: kPrimaryColor, fontSize: 18),
               ))
         ],
@@ -37,6 +48,17 @@ class OnBoardingView extends StatelessWidget {
         child: Column(children: [
           Expanded(
             child: PageView.builder(
+                onPageChanged: (int index) {
+                  if (index == onBoarding.length - 1) {
+                    setState(() {
+                      last = true;
+                    });
+                  } else {
+                    setState(() {
+                      last = false;
+                    });
+                  }
+                },
                 controller: pageController,
                 itemCount: onBoarding.length,
                 itemBuilder: (context, index) => PageViewItem(
@@ -57,9 +79,13 @@ class OnBoardingView extends StatelessWidget {
               const Spacer(),
               FloatingActionButton(
                 onPressed: () {
-                  pageController.nextPage(
-                      duration: const Duration(milliseconds: 700),
-                      curve: Curves.easeInOut);
+                  if (last) {
+                    print('nvigator');
+                  } else {
+                    pageController.nextPage(
+                        duration: const Duration(milliseconds: 700),
+                        curve: Curves.easeInOut);
+                  }
                 },
                 child: const Icon(Icons.arrow_forward_ios),
               )
@@ -93,8 +119,8 @@ class PageViewItem extends StatelessWidget {
           width: MediaQuery.of(context).size.width / 1.4,
           child: Text(
             model.body,
-            style: const TextStyle(
-                color: kPrimaryColor,
+            style: TextStyle(
+                color: kPrimaryColor.withOpacity(0.8),
                 fontSize: 18,
                 fontWeight: FontWeight.bold),
           ),
