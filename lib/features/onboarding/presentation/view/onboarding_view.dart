@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:movie/core/utils/assets.dart';
 import 'package:movie/core/utils/color.dart';
+import 'package:movie/features/home%20layout/presentation/views/home_layout.dart';
 import 'package:movie/features/onboarding/presentation/view/widget/page_view_item.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
@@ -39,7 +41,9 @@ class _OnBoardingViewState extends State<OnBoardingView> {
       appBar: AppBar(
         actions: [
           TextButton(
-              onPressed: () {},
+              onPressed: () {
+                GoRouter.of(context).pushReplacement(HomeLayoutView.routeName);
+              },
               child: const Text(
                 'SKIP ',
                 style: TextStyle(color: kPrimaryColor, fontSize: 18),
@@ -83,7 +87,8 @@ class _OnBoardingViewState extends State<OnBoardingView> {
               FloatingActionButton(
                 onPressed: () {
                   if (last) {
-                    print('nvigator');
+                    GoRouter.of(context)
+                        .pushReplacement(HomeLayoutView.routeName);
                   } else {
                     pageController.nextPage(
                         duration: const Duration(milliseconds: 700),
