@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:movie/core/utils/assets.dart';
 import 'package:movie/core/utils/color.dart';
+import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class OnBoardingView extends StatelessWidget {
   static const String routeName = "/onboarding";
@@ -44,7 +45,15 @@ class OnBoardingView extends StatelessWidget {
           ),
           Row(
             children: [
-              const Text('undecaror'),
+              SmoothPageIndicator(
+                controller: pageController,
+                count: onBoarding.length,
+                effect: const ExpandingDotsEffect(
+                  activeDotColor: Colors.white,
+                  dotWidth: 17,
+                  spacing: 8,
+                ),
+              ),
               const Spacer(),
               FloatingActionButton(
                 onPressed: () {
