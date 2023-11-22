@@ -17,12 +17,14 @@ class MyApp extends StatelessWidget {
       designSize: const Size(360, 690),
       minTextAdapt: true,
       splitScreenMode: true,
-      child: MaterialApp.router(
-        routerConfig: AppRouter.router,
-        debugShowCheckedModeBanner: false,
-        title: 'Movie App',
-        theme: appTheme,
-      ),
+      builder: (context, child) {
+        return MaterialApp.router(
+          routerConfig: AppRouter.router,
+          debugShowCheckedModeBanner: false,
+          title: 'Movie App',
+          theme: appTheme,
+        );
+      },
     );
   }
 }

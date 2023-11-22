@@ -42,6 +42,7 @@ class _HomeLayoutViewState extends State<HomeLayoutView> {
                   label: 'Watchlist'),
             ],
           ),
+          body: cubit.views[cubit.select],
         );
       },
     );

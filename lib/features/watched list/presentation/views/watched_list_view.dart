@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-class SatchedListView extends StatelessWidget {
+class WatchedListView extends StatelessWidget {
   static const String routeName = '/watched_list_view';
 
-  const SatchedListView({super.key});
+  const WatchedListView({super.key});
 
   @override
   Widget build(BuildContext context) {
