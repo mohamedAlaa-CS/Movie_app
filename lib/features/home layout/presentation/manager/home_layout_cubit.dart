@@ -4,6 +4,6 @@ import 'package:movie/features/home%20layout/presentation/manager/home_layout_st
 class HomeLayoutCubit extends Cubit<HomeLayoutState> {
   HomeLayoutCubit() : super(HomeLayoutIntialState());
 
-  HomeLayoutCubit get(context) => BlocProvider.of<HomeLayoutCubit>(context);
-  
+  static HomeLayoutCubit get(context) => BlocProvider.of<HomeLayoutCubit>(context);
+int select = 0;
 }
