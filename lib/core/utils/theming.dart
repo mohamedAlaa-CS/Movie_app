@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movie/core/utils/color.dart';
 
 ThemeData appTheme = ThemeData(
-  scaffoldBackgroundColor: kBlackColor,
+//  scaffoldBackgroundColor: kBlackColor,
   floatingActionButtonTheme:
       const FloatingActionButtonThemeData(backgroundColor: kPrimaryColor),
   appBarTheme: const AppBarTheme(
