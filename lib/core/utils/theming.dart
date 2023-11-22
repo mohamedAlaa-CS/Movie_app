@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movie/core/utils/color.dart';
 
 ThemeData appTheme = ThemeData(
@@ -9,24 +10,24 @@ ThemeData appTheme = ThemeData(
     backgroundColor: Colors.transparent,
     elevation: 0.0,
   ),
-  bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+  bottomNavigationBarTheme: BottomNavigationBarThemeData(
       backgroundColor: kGrayrColor,
       type: BottomNavigationBarType.fixed,
       selectedIconTheme: IconThemeData(
         color: kPrimaryColor,
-        size: 28,
+        size: 28.sp,
       ),
       selectedLabelStyle: TextStyle(
-          fontSize: 10, fontWeight: FontWeight.bold, color: Colors.red),
+          fontSize: 10.sp, fontWeight: FontWeight.bold, color: Colors.red),
       selectedItemColor: kPrimaryColor,
       showSelectedLabels: true,
       elevation: 0,
       unselectedIconTheme: IconThemeData(
         color: kUnclectedColor,
-        size: 26,
+        size: 26.sp,
       ),
       unselectedItemColor: kUnclectedColor,
       showUnselectedLabels: true,
       unselectedLabelStyle:
-          TextStyle(fontSize: 8, fontWeight: FontWeight.bold)),
+          TextStyle(fontSize: 8.sp, fontWeight: FontWeight.bold)),
 );
