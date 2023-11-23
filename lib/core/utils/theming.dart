@@ -3,7 +3,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movie/core/utils/color.dart';
 
 ThemeData appTheme = ThemeData(
-//  scaffoldBackgroundColor: kBlackColor,
+
+  textTheme: Typography(platform: TargetPlatform.iOS).white,
+  
+  scaffoldBackgroundColor: kBlackColor,
   floatingActionButtonTheme:
       const FloatingActionButtonThemeData(backgroundColor: kPrimaryColor),
   appBarTheme: const AppBarTheme(
@@ -11,7 +14,7 @@ ThemeData appTheme = ThemeData(
     elevation: 0.0,
   ),
   bottomNavigationBarTheme: BottomNavigationBarThemeData(
-      backgroundColor: kGrayrColor,
+      backgroundColor: const Color(0xff1A1A1A),
       type: BottomNavigationBarType.fixed,
       selectedIconTheme: IconThemeData(
         color: kPrimaryColor,
