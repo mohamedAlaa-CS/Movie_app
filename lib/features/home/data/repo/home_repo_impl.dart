@@ -15,7 +15,11 @@ class HomeRepoImpl implements HomeRepo {
       var data = await apiService.get(
           endPoint: 'popular?api_key=8b104227bc3518198c861fdf19a3b565');
       List<PopularModel> popular = [];
-      popular.add(PopularModel.fromJson(data));
+      for (var item in data['results']) {
+        popular.add(PopularModel.fromJson(item));
+      }
+      
+      print(popular);
       return right(popular);
     } catch (e) {
       if (e is DioException) {

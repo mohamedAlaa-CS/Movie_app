@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:movie/core/utils/constants.dart';
+import 'package:movie/features/home/data/model/popular_model.dart';
 
-import '../../../../../core/utils/assets.dart';
 import '../../../../../core/utils/color.dart';
 
 class TopSideItem extends StatelessWidget {
-  const TopSideItem({super.key});
+  const TopSideItem({super.key, required this.model});
+  final PopularModel model;
   final bool checked = false;
   @override
   Widget build(BuildContext context) {
@@ -15,10 +17,11 @@ class TopSideItem extends StatelessWidget {
         ClipRRect(
           borderRadius: BorderRadius.circular(6),
           child: Image(
-            image: const AssetImage(Assets.testImage),
+            image: NetworkImage('$apiImage${model.posterPath}'),
             height: 150.h,
             width: double.infinity,
             fit: BoxFit.cover,
+            filterQuality: FilterQuality.high,
           ),
         ),
         Positioned(
@@ -29,7 +32,7 @@ class TopSideItem extends StatelessWidget {
             child: Stack(
               children: [
                 Image(
-                  image: const AssetImage(Assets.testImage),
+                  image: NetworkImage('$apiImage${model.posterPath}'),
                   height: 130.h,
                   width: 90.w,
                   fit: BoxFit.cover,
@@ -49,16 +52,21 @@ class TopSideItem extends StatelessWidget {
         ),
         Positioned(
           top: 155.h,
-          left: 117.w,
+          left: 125.w,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                'Dora and the lost city of gold',
-                style: TextStyle(fontSize: 12.sp),
+              SizedBox(
+                width: MediaQuery.of(context).size.width / 1.7,
+                child: Text(
+                  model.title ?? '',
+                  style:
+                      TextStyle(fontSize: 12.sp, fontWeight: FontWeight.bold),
+                ),
               ),
+              SizedBox(height: MediaQuery.of(context).size.height / 120.h),
               Text(
-                '2019  PG-13  2h 7m',
+                model.releaseDate ?? '',
                 style: TextStyle(fontSize: 10.sp, fontWeight: FontWeight.w300),
               ),
             ],
