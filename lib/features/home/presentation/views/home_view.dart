@@ -2,10 +2,11 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:movie/features/home/presentation/manager/cubit/popular_movie_cubit.dart';
 import 'package:movie/features/home/presentation/views/widgets/new_relase_section.dart';
 import 'package:movie/features/home/presentation/views/widgets/recomended_section.dart';
 import 'package:movie/features/home/presentation/views/widgets/top_side_item.dart';
+
+import '../manager/top side cubit/popular_movie_cubit.dart';
 
 class HomeView extends StatelessWidget {
   static const String routeName = '/home_view';
