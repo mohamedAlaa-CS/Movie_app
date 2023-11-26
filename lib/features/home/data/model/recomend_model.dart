@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
 
-class Recomend extends Equatable {
+class RecomendModel extends Equatable {
   final bool? adult;
   final String? backdropPath;
   final List<int>? genreIds;
@@ -16,7 +16,7 @@ class Recomend extends Equatable {
   final double? voteAverage;
   final int? voteCount;
 
-  const Recomend({
+  const RecomendModel({
     this.adult,
     this.backdropPath,
     this.genreIds,
@@ -33,7 +33,7 @@ class Recomend extends Equatable {
     this.voteCount,
   });
 
-  factory Recomend.fromJson(Map<String, dynamic> json) => Recomend(
+  factory RecomendModel.fromJson(Map<String, dynamic> json) => RecomendModel(
         adult: json['adult'] as bool?,
         backdropPath: json['backdrop_path'] as String?,
         genreIds: json['genre_ids'] as List<int>?,
