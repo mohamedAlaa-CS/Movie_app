@@ -18,8 +18,7 @@ class HomeRepoImpl implements HomeRepo {
       for (var item in data['results']) {
         popular.add(PopularModel.fromJson(item));
       }
-      
-      print(popular);
+
       return right(popular);
     } catch (e) {
       if (e is DioException) {

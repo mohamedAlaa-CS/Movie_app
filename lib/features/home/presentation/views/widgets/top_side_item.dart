@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movie/core/utils/constants.dart';
@@ -15,15 +16,18 @@ class TopSideItem extends StatelessWidget {
       clipBehavior: Clip.none,
       children: [
         ClipRRect(
-          borderRadius: BorderRadius.circular(6),
-          child: Image(
-            image: NetworkImage('$apiImage${model.posterPath}'),
-            height: 150.h,
-            width: double.infinity,
-            fit: BoxFit.cover,
-            filterQuality: FilterQuality.high,
-          ),
-        ),
+            borderRadius: BorderRadius.circular(6),
+            child: CachedNetworkImage(
+              imageUrl: '$apiImage${model.posterPath}',
+              height: 150.h,
+              width: double.infinity,
+              fit: BoxFit.cover,
+              filterQuality: FilterQuality.high,
+              placeholder: (context, url) =>
+                  const Center(child: CircularProgressIndicator()),
+              errorWidget: (context, url, error) =>
+                  const Center(child: Icon(Icons.error)),
+            )),
         Positioned(
           left: 19.w,
           top: 60.h,
@@ -31,11 +35,16 @@ class TopSideItem extends StatelessWidget {
             borderRadius: BorderRadius.circular(8),
             child: Stack(
               children: [
-                Image(
-                  image: NetworkImage('$apiImage${model.posterPath}'),
+                CachedNetworkImage(
+                  imageUrl: '$apiImage${model.posterPath}',
                   height: 130.h,
                   width: 90.w,
                   fit: BoxFit.cover,
+                  filterQuality: FilterQuality.high,
+                  placeholder: (context, url) =>
+                      const Center(child: CircularProgressIndicator()),
+                  errorWidget: (context, url, error) =>
+                      const Center(child: Icon(Icons.error)),
                 ),
                 Image(
                   image: const AssetImage('assets/images/bookmark_add.png'),
@@ -67,7 +76,7 @@ class TopSideItem extends StatelessWidget {
               SizedBox(height: MediaQuery.of(context).size.height / 120.h),
               Text(
                 model.releaseDate ?? '',
-                style: TextStyle(fontSize: 10.sp, fontWeight: FontWeight.w300),
+                style: TextStyle(fontSize: 10.sp, fontWeight: FontWeight.w400),
               ),
             ],
           ),
