@@ -19,27 +19,27 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return ScreenUtilInit(
-      designSize: const Size(360, 690),
-      minTextAdapt: true,
-      splitScreenMode: true,
-      builder: (context, child) {
-        return MultiBlocProvider(
-          providers: [
-            BlocProvider(
-              create: (context) =>
-                  PopularMovieCubit(HomeRepoImpl(ApiService(Dio())))
-                    ..fetchPopularMovie(),
-            ),
-          ],
-          child: MaterialApp.router(
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) =>
+              PopularMovieCubit(HomeRepoImpl(ApiService(Dio())))
+                ..fetchPopularMovie(),
+        ),
+      ],
+      child: ScreenUtilInit(
+        designSize: const Size(360, 690),
+        minTextAdapt: true,
+        splitScreenMode: true,
+        builder: (context, child) {
+          return MaterialApp.router(
             routerConfig: AppRouter.router,
             debugShowCheckedModeBanner: false,
             title: 'Movie App',
             theme: appTheme,
-          ),
-        );
-      },
+          );
+        },
+      ),
     );
   }
 }

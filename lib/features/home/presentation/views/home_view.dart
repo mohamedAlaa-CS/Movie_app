@@ -1,7 +1,10 @@
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:movie/core/utils/api_service.dart';
+import 'package:movie/features/home/data/repo/home_repo_impl.dart';
 import 'package:movie/features/home/presentation/views/widgets/new_relase_section.dart';
 import 'package:movie/features/home/presentation/views/widgets/recomended_section.dart';
 import 'package:movie/features/home/presentation/views/widgets/top_side_item.dart';
@@ -21,6 +24,7 @@ class HomeView extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           BlocBuilder<PopularMovieCubit, PopularMovieState>(
+            bloc: PopularMovieCubit(HomeRepoImpl(ApiService(Dio())))..fetchPopularMovie(),
             builder: (context, state) {
               if (state is PopularMovieLoading) {
                 return const Center(child: CircularProgressIndicator());
