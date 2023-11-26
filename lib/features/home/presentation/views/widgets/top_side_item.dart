@@ -36,7 +36,7 @@ class TopSideItem extends StatelessWidget {
             child: Stack(
               children: [
                 CachedNetworkImage(
-                  imageUrl: '$apiImage${model.posterPath}',
+                  imageUrl: '$apiImage${model.backdropPath}',
                   height: 130.h,
                   width: 90.w,
                   fit: BoxFit.cover,
