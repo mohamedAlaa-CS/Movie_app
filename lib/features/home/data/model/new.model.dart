@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
 
-class New extends Equatable {
+class NewModel extends Equatable {
   final bool? adult;
   final String? backdropPath;
   final List<int>? genreIds;
@@ -16,7 +16,7 @@ class New extends Equatable {
   final double? voteAverage;
   final int? voteCount;
 
-  const New({
+  const NewModel({
     this.adult,
     this.backdropPath,
     this.genreIds,
@@ -33,7 +33,7 @@ class New extends Equatable {
     this.voteCount,
   });
 
-  factory New.fromJson(Map<String, dynamic> json) => New(
+  factory NewModel.fromJson(Map<String, dynamic> json) => NewModel(
         adult: json['adult'] as bool?,
         backdropPath: json['backdrop_path'] as String?,
         genreIds: json['genre_ids'] as List<int>?,
