@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:movie/features/home/presentation/manager/Recomend%20cubit/recomend_cubit.dart';
 import 'package:movie/features/home/presentation/views/widgets/recomend_list_view_item.dart';
 
 class RecomendListView extends StatelessWidget {
@@ -8,14 +10,28 @@ class RecomendListView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var media = MediaQuery.of(context).size;
-    return SizedBox(
-      height: 140.h,
-      child: ListView.separated(
-          scrollDirection: Axis.horizontal,
-          itemBuilder: (context, index) => const RecomendedListViewItem(),
-          separatorBuilder: (context, index) =>
-              SizedBox(width: media.width / 22),
-          itemCount: 10),
+    return BlocBuilder<RecomendCubit, RecomendState>(
+      builder: (context, state) {
+        if (state is RecomendLoading) {
+          return const Center(child: CircularProgressIndicator());
+        }
+        if (state is RecomendSuccess) {
+          return SizedBox(
+            height: 140.h,
+            child: ListView.separated(
+                scrollDirection: Axis.horizontal,
+                itemBuilder: (context, index) =>
+                    RecomendedListViewItem(model: state.recomendList[index]),
+                separatorBuilder: (context, index) =>
+                    SizedBox(width: media.width / 22),
+                itemCount: state.recomendList.length),
+          );
+        }
+        if (state is RecomendFailure) {
+          return Center(child: Text(state.errorMessage));
+        }
+        return const Center(child: Text('some thing wrong'));
+      },
     );
   }
 }

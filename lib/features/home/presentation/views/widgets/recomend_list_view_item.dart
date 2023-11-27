@@ -1,11 +1,14 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:movie/core/utils/constants.dart';
+import 'package:movie/features/home/data/model/recomend_model.dart';
 
-import '../../../../../core/utils/assets.dart';
 import '../../../../../core/utils/color.dart';
 
 class RecomendedListViewItem extends StatelessWidget {
-  const RecomendedListViewItem({super.key});
+  const RecomendedListViewItem({super.key, required this.model});
+  final RecomendModel model;
   final bool checked = false;
   @override
   Widget build(BuildContext context) {
@@ -21,14 +24,22 @@ class RecomendedListViewItem extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               ClipRRect(
-                borderRadius: const BorderRadius.only(
-                    topLeft: Radius.circular(8), topRight: Radius.circular(8)),
-                child: Image(
-                  image: const AssetImage(Assets.testImage),
-                  height: 95.h,
-                  width: 105.w,
-                  fit: BoxFit.cover,
-                ),
+                  borderRadius: const BorderRadius.only(
+                      topLeft: Radius.circular(8),
+                      topRight: Radius.circular(8)),
+                  child: CachedNetworkImage(
+                    height: 95.h,
+                    width: 105.w,
+                    imageUrl: '$apiImage${model.posterPath}',
+                    fit: BoxFit.cover,
+                    filterQuality: FilterQuality.high,
+                    placeholder: (context, url) =>
+                        const Center(child: CircularProgressIndicator()),
+                    errorWidget: (context, url, error) =>
+                        const Center(child: Icon(Icons.error)),
+                  )),
+              SizedBox(
+                height: 3.h,
               ),
               Container(
                 padding: EdgeInsets.only(left: 4.w),
@@ -46,19 +57,24 @@ class RecomendedListViewItem extends StatelessWidget {
                           width: 4.w,
                         ),
                         Text(
-                          '7.7',
+                          '${model.voteAverage ?? 0.0}',
                           style: TextStyle(
-                              fontSize: 13.sp, fontWeight: FontWeight.bold),
+                              fontSize: 12.sp, fontWeight: FontWeight.bold),
                         )
                       ],
                     ),
-                    Text(
-                      'Deadpool 2',
-                      style: TextStyle(
-                          fontSize: 12.sp, fontWeight: FontWeight.w500),
+                    SizedBox(
+                      width: MediaQuery.of(context).size.width / 2,
+                      child: Text(
+                        model.title ?? '',
+                        style: TextStyle(
+                            fontSize: 11.sp, fontWeight: FontWeight.w500),
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                      ),
                     ),
                     Text(
-                      '2018  R  1h 59m',
+                      model.releaseDate ?? '',
                       style: TextStyle(fontSize: 10.sp),
                     )
                   ],
@@ -71,10 +87,15 @@ class RecomendedListViewItem extends StatelessWidget {
           image: const AssetImage('assets/images/bookmark_add.png'),
           color: checked ? kPrimaryColor : const Color(0xff514F4F),
         ),
-        Icon(
-          checked ? Icons.check : Icons.add,
-          color: Colors.white,
-          size: 22.sp,
+        InkWell(
+          onTap: (){
+            
+          },
+          child: Icon(
+            checked ? Icons.check : Icons.add,
+            color: Colors.white,
+            size: 22.sp,
+          ),
         )
       ],
     );

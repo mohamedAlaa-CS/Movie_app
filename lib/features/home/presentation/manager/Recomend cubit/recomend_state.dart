@@ -22,3 +22,5 @@ final class RecomendFailure extends RecomendState {
 
   const RecomendFailure(this.errorMessage);
 }
+
+final class RecomendChangeMarker extends RecomendState {}
