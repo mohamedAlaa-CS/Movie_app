@@ -88,9 +88,7 @@ class RecomendedListViewItem extends StatelessWidget {
           color: checked ? kPrimaryColor : const Color(0xff514F4F),
         ),
         InkWell(
-          onTap: (){
-            
-          },
+          onTap: () {},
           child: Icon(
             checked ? Icons.check : Icons.add,
             color: Colors.white,

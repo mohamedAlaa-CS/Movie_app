@@ -18,15 +18,17 @@ class TopSideItem extends StatelessWidget {
         ClipRRect(
           borderRadius: BorderRadius.circular(6),
           child: CachedNetworkImage(
-              imageUrl: '$apiImage${model.backdropPath ?? model.posterPath}',
-              height: 150.h,
-              width: double.infinity,
-              fit: BoxFit.cover,
-              filterQuality: FilterQuality.high,
-              placeholder: (context, url) =>
-                  const Center(child: CircularProgressIndicator()),
-              errorWidget: (context, url, error) =>
-                  const Center(child: Icon(Icons.error),),),
+            imageUrl: '$apiImage${model.backdropPath ?? model.posterPath}',
+            height: 150.h,
+            width: double.infinity,
+            fit: BoxFit.cover,
+            filterQuality: FilterQuality.high,
+            placeholder: (context, url) =>
+                const Center(child: CircularProgressIndicator()),
+            errorWidget: (context, url, error) => const Center(
+              child: Icon(Icons.error),
+            ),
+          ),
         ),
         Positioned(
           left: 19.w,
