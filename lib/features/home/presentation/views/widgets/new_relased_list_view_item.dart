@@ -1,24 +1,31 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movie/core/utils/color.dart';
+import 'package:movie/features/home/data/model/new.model.dart';
 
-import '../../../../../core/utils/assets.dart';
+import '../../../../../core/utils/constants.dart';
 
 class NewsRelaseListViewItem extends StatelessWidget {
   final bool checked = false;
-
-  const NewsRelaseListViewItem({super.key});
+  final NewModel model;
+  const NewsRelaseListViewItem({super.key, required this.model});
   @override
   Widget build(BuildContext context) {
     return ClipRRect(
       borderRadius: BorderRadius.circular(8),
       child: Stack(
         children: [
-          Image(
-            image: const AssetImage(Assets.testImage),
+          CachedNetworkImage(
             height: 130.h,
             width: 90.w,
+            imageUrl: '$apiImage${model.posterPath}',
             fit: BoxFit.cover,
+            filterQuality: FilterQuality.high,
+            placeholder: (context, url) =>
+                const Center(child: CircularProgressIndicator()),
+            errorWidget: (context, url, error) =>
+                const Center(child: Icon(Icons.error)),
           ),
           Image(
             image: const AssetImage('assets/images/bookmark_add.png'),

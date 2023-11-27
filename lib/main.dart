@@ -6,6 +6,7 @@ import 'package:movie/core/router/app_router.dart';
 import 'package:movie/core/utils/api_service.dart';
 import 'package:movie/core/utils/theming.dart';
 import 'package:movie/features/home/data/repo/home_repo_impl.dart';
+import 'package:movie/features/home/presentation/manager/New%20Relase%20cubit/new_relase_cubit.dart';
 import 'package:movie/features/home/presentation/manager/Recomend%20cubit/recomend_cubit.dart';
 
 import 'features/home/presentation/manager/Top side cubit/popular_movie_cubit.dart';
@@ -30,6 +31,10 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (context) => RecomendCubit(HomeRepoImpl(ApiService(Dio())))
             ..featchRecomendMovie(),
+        ),
+        BlocProvider(
+          create: (context) => NewRelaseCubit(HomeRepoImpl(ApiService(Dio())))
+            ..featchNewRelase(),
         ),
       ],
       child: ScreenUtilInit(
