@@ -10,6 +10,7 @@ class NewRelaseListView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var media = MediaQuery.of(context).size;
+    var cubit = NewRelaseCubit.get(context);
     return BlocBuilder<NewRelaseCubit, NewRelaseState>(
       builder: (context, state) {
         if (state is NewRelaseLoading) {
@@ -18,21 +19,22 @@ class NewRelaseListView extends StatelessWidget {
         if (state is NewRelaseFailuer) {
           return Center(child: Text(state.errorMessage));
         }
-        if (state is NewRelaseSuccess) {
-          return SizedBox(
-            height: media.height / 6,
-            child: ListView.separated(
-                separatorBuilder: (context, index) => SizedBox(
-                      width: media.width / 32,
-                    ),
-                scrollDirection: Axis.horizontal,
-                itemCount: state.newRelaselist.length,
-                itemBuilder: (contetxt, index) => NewsRelaseListViewItem(
-                      model: state.newRelaselist[index],
-                    )),
-          );
-        }
-        return const Center(child: Text('Somethinge went wrong'));
+        return SizedBox(
+          height: media.height / 6,
+          child: ListView.separated(
+              separatorBuilder: (context, index) => SizedBox(
+                    width: media.width / 32,
+                  ),
+              scrollDirection: Axis.horizontal,
+              itemCount: cubit.newRelaseList.length,
+              itemBuilder: (contetxt, index) => NewsRelaseListViewItem(
+                    model: cubit.newRelaseList[index],
+                    checked: cubit.selectedItemToWatchList.contains(index),
+                    onTap: () {
+                      cubit.changeWatchList(index);
+                    },
+                  )),
+        );
       },
     );
   }

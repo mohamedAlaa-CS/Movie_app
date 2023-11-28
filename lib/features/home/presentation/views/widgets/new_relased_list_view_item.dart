@@ -7,9 +7,11 @@ import 'package:movie/features/home/data/model/new.model.dart';
 import '../../../../../core/utils/constants.dart';
 
 class NewsRelaseListViewItem extends StatelessWidget {
-  final bool checked = false;
+  final bool checked;
   final NewModel model;
-  const NewsRelaseListViewItem({super.key, required this.model});
+  final void Function() onTap;
+  const NewsRelaseListViewItem(
+      {super.key, required this.model, required this.checked, required this.onTap});
   @override
   Widget build(BuildContext context) {
     return ClipRRect(
@@ -31,10 +33,13 @@ class NewsRelaseListViewItem extends StatelessWidget {
             image: const AssetImage('assets/images/bookmark_add.png'),
             color: checked ? kPrimaryColor : const Color(0xff514F4F),
           ),
-          Icon(
-            checked ? Icons.check : Icons.add,
-            color: Colors.white,
-            size: 22.sp,
+          InkWell(
+            onTap: onTap,
+            child: Icon(
+              checked ? Icons.check : Icons.add,
+              color: Colors.white,
+              size: 22.sp,
+            ),
           )
         ],
       ),
