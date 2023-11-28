@@ -11,30 +11,29 @@ class TopSideWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var cubit = PopularMovieCubit.get(context);
     return BlocBuilder<PopularMovieCubit, PopularMovieState>(
       builder: (context, state) {
         if (state is PopularMovieLoading) {
           return const Center(child: CircularProgressIndicator());
         } else if (state is PopularMovieFailuer) {
           return const Center(child: Text('something is wrong'));
-        } else if (state is PopularMovieSuccess) {
-          return CarouselSlider.builder(
-            itemBuilder: (context, index, realIndex) =>
-                TopSideItem(model: state.popular[index]),
-            itemCount: state.popular.length,
-            options: CarouselOptions(
-              height: 194.0.h,
-              enlargeCenterPage: true,
-              autoPlay: true,
-              aspectRatio: 16.w / 9.h,
-              autoPlayCurve: Curves.fastOutSlowIn,
-              enableInfiniteScroll: true,
-              autoPlayAnimationDuration: const Duration(milliseconds: 800),
-              viewportFraction: 0.88,
-            ),
-          );
         }
-        return const Center(child: Text('something is wrong'));
+        return CarouselSlider.builder(
+          itemBuilder: (context, index, realIndex) =>
+              TopSideItem(model: cubit.popularMovieList[index]),
+          itemCount: cubit.popularMovieList.length,
+          options: CarouselOptions(
+            height: 194.0.h,
+            enlargeCenterPage: true,
+            autoPlay: true,
+            aspectRatio: 16.w / 9.h,
+            autoPlayCurve: Curves.fastOutSlowIn,
+            enableInfiniteScroll: true,
+            autoPlayAnimationDuration: const Duration(milliseconds: 800),
+            viewportFraction: 0.88,
+          ),
+        );
       },
     );
   }

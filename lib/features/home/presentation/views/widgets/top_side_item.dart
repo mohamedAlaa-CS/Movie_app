@@ -9,7 +9,7 @@ import '../../../../../core/utils/color.dart';
 class TopSideItem extends StatelessWidget {
   const TopSideItem({super.key, required this.model});
   final PopularModel model;
-  final bool checked = false;
+  final bool checked = true;
   @override
   Widget build(BuildContext context) {
     return Stack(
