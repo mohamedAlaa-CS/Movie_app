@@ -11,9 +11,7 @@ final class RecomendInitial extends RecomendState {}
 
 final class RecomendLoading extends RecomendState {}
 
-final class RecomendSuccess extends RecomendState {
- 
-}
+final class RecomendSuccess extends RecomendState {}
 
 final class RecomendFailure extends RecomendState {
   final String errorMessage;
@@ -21,4 +19,6 @@ final class RecomendFailure extends RecomendState {
   const RecomendFailure(this.errorMessage);
 }
 
-final class RecomendChangeMarker extends RecomendState {}
+final class RecomendChangeAddToWatchListView extends RecomendState {}
+
+final class RecomendChangeRemoveFromWatchListView extends RecomendState {}

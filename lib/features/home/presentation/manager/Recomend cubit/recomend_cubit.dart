@@ -11,6 +11,15 @@ class RecomendCubit extends Cubit<RecomendState> {
   static RecomendCubit get(context) => BlocProvider.of<RecomendCubit>(context);
   //! change to add in watch list view
   List<int> selectItemToWatchListView = [];
+  changeWatchList(index) {
+    if (selectItemToWatchListView.contains(index)) {
+      selectItemToWatchListView.remove(index);
+      emit(RecomendChangeRemoveFromWatchListView());
+    } else {
+      selectItemToWatchListView.add(index);
+      emit(RecomendChangeAddToWatchListView());
+    }
+  }
 
   //! featch recomend movie
   List<RecomendModel> recomendMovieList = [];

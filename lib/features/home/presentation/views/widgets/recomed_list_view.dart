@@ -24,8 +24,13 @@ class RecomendListView extends StatelessWidget {
           height: 140.h,
           child: ListView.separated(
               scrollDirection: Axis.horizontal,
-              itemBuilder: (context, index) =>
-                  RecomendedListViewItem(model: cubit.recomendMovieList[index]),
+              itemBuilder: (context, index) => RecomendedListViewItem(
+                    model: cubit.recomendMovieList[index],
+                    checked: cubit.selectItemToWatchListView.contains(index),
+                    onTap: () {
+                      cubit.changeWatchList(index);
+                    },
+                  ),
               separatorBuilder: (context, index) =>
                   SizedBox(width: media.width / 22),
               itemCount: cubit.recomendMovieList.length),

@@ -7,9 +7,15 @@ import 'package:movie/features/home/data/model/recomend_model.dart';
 import '../../../../../core/utils/color.dart';
 
 class RecomendedListViewItem extends StatelessWidget {
-  const RecomendedListViewItem({super.key, required this.model});
+  final void Function() onTap;
   final RecomendModel model;
-  final bool checked = false;
+  final bool checked;
+  const RecomendedListViewItem(
+      {super.key,
+      required this.model,
+      required this.checked,
+      required this.onTap});
+
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -88,7 +94,7 @@ class RecomendedListViewItem extends StatelessWidget {
           color: checked ? kPrimaryColor : const Color(0xff514F4F),
         ),
         InkWell(
-          onTap: () {},
+          onTap: onTap,
           child: Icon(
             checked ? Icons.check : Icons.add,
             color: Colors.white,
