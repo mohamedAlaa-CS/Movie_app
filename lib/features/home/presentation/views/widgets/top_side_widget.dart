@@ -20,8 +20,13 @@ class TopSideWidget extends StatelessWidget {
           return Center(child: Text(state.errorMessage));
         }
         return CarouselSlider.builder(
-          itemBuilder: (context, index, realIndex) =>
-              TopSideItem(model: cubit.popularMovieList[index]),
+          itemBuilder: (context, index, realIndex) => TopSideItem(
+            model: cubit.popularMovieList[index],
+            checked: cubit.selectedItemToWatchList.contains(index),
+            onTap: () {
+              cubit.changeWatchList(index);
+            },
+          ),
           itemCount: cubit.popularMovieList.length,
           options: CarouselOptions(
             height: 194.0.h,

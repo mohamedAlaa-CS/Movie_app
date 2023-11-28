@@ -7,9 +7,15 @@ import 'package:movie/features/home/data/model/popular_model.dart';
 import '../../../../../core/utils/color.dart';
 
 class TopSideItem extends StatelessWidget {
-  const TopSideItem({super.key, required this.model});
+  final void Function() onTap;
   final PopularModel model;
-  final bool checked = true;
+  final bool checked;
+  const TopSideItem(
+      {super.key,
+      required this.model,
+      required this.checked,
+      required this.onTap});
+
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -52,10 +58,13 @@ class TopSideItem extends StatelessWidget {
                   image: const AssetImage('assets/images/bookmark_add.png'),
                   color: checked ? kPrimaryColor : const Color(0xff514F4F),
                 ),
-                Icon(
-                  checked ? Icons.check : Icons.add,
-                  color: Colors.white,
-                  size: 22.sp,
+                InkWell(
+                  onTap: onTap,
+                  child: Icon(
+                    checked ? Icons.check : Icons.add,
+                    color: Colors.white,
+                    size: 22.sp,
+                  ),
                 )
               ],
             ),

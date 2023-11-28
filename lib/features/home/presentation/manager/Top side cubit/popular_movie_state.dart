@@ -11,14 +11,14 @@ final class PopularMovieInitial extends PopularMovieState {}
 
 final class PopularMovieLoading extends PopularMovieState {}
 
-final class PopularMovieSuccess extends PopularMovieState {
- 
-
- 
-}
+final class PopularMovieSuccess extends PopularMovieState {}
 
 final class PopularMovieFailuer extends PopularMovieState {
   final String errorMessage;
 
   const PopularMovieFailuer(this.errorMessage);
 }
+
+final class PopularMovieAddToWatchList extends PopularMovieState {}
+
+final class PopularMovieRemoveFormWatchList extends PopularMovieState {}

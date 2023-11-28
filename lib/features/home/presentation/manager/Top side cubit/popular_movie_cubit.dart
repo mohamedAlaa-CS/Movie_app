@@ -10,9 +10,22 @@ class PopularMovieCubit extends Cubit<PopularMovieState> {
   final HomeRepo homeRepo;
 
   static PopularMovieCubit get(context) => BlocProvider.of(context);
+//! change mark to watch List view
+  List<int> selectedItemToWatchList = [];
+
+  changeWatchList(index) {
+    if (selectedItemToWatchList.contains(index)) {
+      selectedItemToWatchList.remove(index);
+      emit(PopularMovieRemoveFormWatchList());
+    } else {
+      selectedItemToWatchList.add(index);
+      emit(PopularMovieAddToWatchList());
+    }
+  }
 
 //! featch popular movie
   List<PopularModel> popularMovieList = [];
+
   fetchPopularMovie() async {
     emit(PopularMovieLoading());
     var result = await homeRepo.featchPopularMovie();
