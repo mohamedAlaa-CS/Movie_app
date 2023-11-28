@@ -17,7 +17,7 @@ class TopSideWidget extends StatelessWidget {
         if (state is PopularMovieLoading) {
           return const Center(child: CircularProgressIndicator());
         } else if (state is PopularMovieFailuer) {
-          return const Center(child: Text('something is wrong'));
+          return Center(child: Text(state.errorMessage));
         }
         return CarouselSlider.builder(
           itemBuilder: (context, index, realIndex) =>
