@@ -10,27 +10,26 @@ class RecomendListView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var media = MediaQuery.of(context).size;
+    var cubit = RecomendCubit.get(context);
     return BlocBuilder<RecomendCubit, RecomendState>(
       builder: (context, state) {
         if (state is RecomendLoading) {
           return const Center(child: CircularProgressIndicator());
         }
-        if (state is RecomendSuccess) {
-          return SizedBox(
-            height: 140.h,
-            child: ListView.separated(
-                scrollDirection: Axis.horizontal,
-                itemBuilder: (context, index) =>
-                    RecomendedListViewItem(model: state.recomendList[index]),
-                separatorBuilder: (context, index) =>
-                    SizedBox(width: media.width / 22),
-                itemCount: state.recomendList.length),
-          );
-        }
         if (state is RecomendFailure) {
           return Center(child: Text(state.errorMessage));
         }
-        return const Center(child: Text('some thing wrong'));
+
+        return SizedBox(
+          height: 140.h,
+          child: ListView.separated(
+              scrollDirection: Axis.horizontal,
+              itemBuilder: (context, index) =>
+                  RecomendedListViewItem(model: cubit.recomendMovieList[index]),
+              separatorBuilder: (context, index) =>
+                  SizedBox(width: media.width / 22),
+              itemCount: cubit.recomendMovieList.length),
+        );
       },
     );
   }

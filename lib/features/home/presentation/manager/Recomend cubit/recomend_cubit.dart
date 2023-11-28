@@ -7,21 +7,22 @@ part 'recomend_state.dart';
 
 class RecomendCubit extends Cubit<RecomendState> {
   RecomendCubit(this.homeRepo) : super(RecomendInitial());
-  bool checked = false;
-  static RecomendCubit get(context) => BlocProvider.of<RecomendCubit>(context);
-  changeMarker() {
-    checked = !checked;
-    //emit(RecomendChangeMarker());
-  }
-
   final HomeRepo homeRepo;
+  static RecomendCubit get(context) => BlocProvider.of<RecomendCubit>(context);
+  //! change to add in watch list view
+  List<int> selectItemToWatchListView = [];
+
+  //! featch recomend movie
+  List<RecomendModel> recomendMovieList = [];
+
   featchRecomendMovie() async {
     emit(RecomendLoading());
     var result = await homeRepo.feactchRecomendMovie();
     result.fold((failuer) {
       emit(RecomendFailure(failuer.errorMessage));
     }, (recomendList) {
-      emit(RecomendSuccess(recomendList));
+      recomendMovieList.addAll(recomendList);
+      emit(RecomendSuccess());
     });
   }
 }
