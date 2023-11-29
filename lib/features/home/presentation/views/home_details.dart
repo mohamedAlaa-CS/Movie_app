@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movie/core/utils/assets.dart';
 import 'package:movie/features/home/presentation/views/widgets/custom_movie_rate.dart';
 import 'package:movie/features/home/presentation/views/widgets/custom_type_of_movie_details.dart';
+import 'package:movie/features/home/presentation/views/widgets/more_like_this_section.dart';
 
 import '../../../../core/utils/color.dart';
 
@@ -103,7 +104,10 @@ class HomeDetailsView extends StatelessWidget {
                 )
               ],
             ),
-          )
+          ),
+          SizedBox(height: 10.h),
+          const MoreLikeThisSection(),
+          // const RecomendedSection()
         ],
       ),
     );
