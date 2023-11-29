@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 import 'package:movie/features/home/presentation/manager/Recomend%20cubit/recomend_cubit.dart';
+import 'package:movie/features/home/presentation/views/home_details.dart';
 import 'package:movie/features/home/presentation/views/widgets/recomend_list_view_item.dart';
 
 class RecomendListView extends StatelessWidget {
@@ -24,12 +26,17 @@ class RecomendListView extends StatelessWidget {
           height: 140.h,
           child: ListView.separated(
               scrollDirection: Axis.horizontal,
-              itemBuilder: (context, index) => RecomendedListViewItem(
-                    model: cubit.recomendMovieList[index],
-                    checked: cubit.selectItemToWatchListView.contains(index),
+              itemBuilder: (context, index) => InkWell(
                     onTap: () {
-                      cubit.changeWatchList(index);
+                      GoRouter.of(context).push(HomeDetailsView.routeName);
                     },
+                    child: RecomendedListViewItem(
+                      model: cubit.recomendMovieList[index],
+                      checked: cubit.selectItemToWatchListView.contains(index),
+                      onTap: () {
+                        cubit.changeWatchList(index);
+                      },
+                    ),
                   ),
               separatorBuilder: (context, index) =>
                   SizedBox(width: media.width / 22),

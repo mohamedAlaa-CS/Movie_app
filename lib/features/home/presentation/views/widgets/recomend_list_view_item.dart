@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movie/core/utils/constants.dart';
 import 'package:movie/features/home/data/model/recomend_model.dart';
+import 'package:movie/features/home/presentation/views/widgets/custom_movie_rate.dart';
 
 import '../../../../../core/utils/color.dart';
 
@@ -52,23 +53,7 @@ class RecomendedListViewItem extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Row(
-                      children: [
-                        Icon(
-                          Icons.star,
-                          color: kPrimaryColor,
-                          size: 21.sp,
-                        ),
-                        SizedBox(
-                          width: 4.w,
-                        ),
-                        Text(
-                          '${model.voteAverage ?? 0.0}',
-                          style: TextStyle(
-                              fontSize: 12.sp, fontWeight: FontWeight.bold),
-                        )
-                      ],
-                    ),
+                    CustomMovieRate(rate: '${model.voteAverage ?? 0.0}'),
                     SizedBox(
                       width: MediaQuery.of(context).size.width / 2,
                       child: Text(

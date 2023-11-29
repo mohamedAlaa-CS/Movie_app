@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:movie/features/brawser/presentation/view/brawser_view.dart';
 import 'package:movie/features/home%20layout/presentation/manager/home_layout_cubit.dart';
 import 'package:movie/features/home%20layout/presentation/views/home_layout.dart';
+import 'package:movie/features/home/presentation/views/home_details.dart';
 import 'package:movie/features/home/presentation/views/home_view.dart';
 import 'package:movie/features/onboarding/presentation/view/onboarding_view.dart';
 import 'package:movie/features/search/presentation/views/shearch_view.dart';
@@ -42,6 +43,10 @@ class AppRouter {
       GoRoute(
         path: WatchedListView.routeName,
         builder: (context, state) => const WatchedListView(),
+      ),
+      GoRoute(
+        path: HomeDetailsView.routeName,
+        builder: (context, state) =>  HomeDetailsView(),
       ),
     ],
   );
