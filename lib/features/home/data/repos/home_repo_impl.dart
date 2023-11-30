@@ -5,7 +5,7 @@ import 'package:movie/core/utils/api_service.dart';
 import 'package:movie/features/home/data/model/new.model.dart';
 import 'package:movie/features/home/data/model/popular_model.dart';
 import 'package:movie/features/home/data/model/recomend_model.dart';
-import 'package:movie/features/home/data/repo/home_repo.dart';
+import 'package:movie/features/home/data/repos/home%20repo/home_repo.dart';
 
 class HomeRepoImpl implements HomeRepo {
   final ApiService apiService;

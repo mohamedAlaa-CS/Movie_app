@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie/features/home/data/model/recomend_model.dart';
-import 'package:movie/features/home/data/repo/home_repo.dart';
+import 'package:movie/features/home/data/repos/home%20repo/home_repo.dart';
 
 part 'recomend_state.dart';
 
