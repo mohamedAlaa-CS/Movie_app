@@ -8,3 +8,13 @@ sealed class DetailsState extends Equatable {
 }
 
 final class DetailsInitial extends DetailsState {}
+
+final class DetailsLoading extends DetailsState {}
+
+final class DetailsSuccess extends DetailsState {}
+
+final class DetailsFailuer extends DetailsState {
+  final String errorMessage;
+
+  const DetailsFailuer(this.errorMessage);
+}
