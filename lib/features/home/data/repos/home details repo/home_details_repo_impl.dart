@@ -10,11 +10,10 @@ class HomeDetailsRepoImpl implements HomeDetailsRepo {
 
   HomeDetailsRepoImpl(this.apiService);
   @override
-  Future<Either<Failure, DetailsModel>> featchDetails(
-      {required String query}) async {
+  Future<Either<Failure, DetailsModel>> featchDetails({required int id}) async {
     try {
       var data = await apiService.get(
-          endPoint: '$query?api_key=8b104227bc3518198c861fdf19a3b565');
+          endPoint: '$id?api_key=8b104227bc3518198c861fdf19a3b565');
 
       return right(DetailsModel.fromJson(data));
     } catch (e) {
