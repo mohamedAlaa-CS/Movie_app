@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movie/core/utils/assets.dart';
 import 'package:movie/features/home/presentation/views/widgets/custom_movie_rate.dart';
-import 'package:movie/features/home/presentation/views/widgets/custom_type_of_movie_details.dart';
 import 'package:movie/features/home/presentation/views/widgets/more_like_this_section.dart';
 
 import '../../../../core/utils/color.dart';
@@ -73,29 +72,23 @@ class HomeDetailsView extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Row(
-                        //mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          SizedBox(
-                              height: 22.h,
-                              width: media.width / 1.57,
-                              child: ListView(
-                                scrollDirection: Axis.horizontal,
-                                children: const [
-                                  CustomTypeOfMovieDetails(),
-                                  CustomTypeOfMovieDetails(),
-                                  CustomTypeOfMovieDetails(),
-                                ],
-                              )),
-                        ],
-                      ),
                       SizedBox(height: 3.h),
-                      const CustomTypeOfMovieDetails(),
-                      SizedBox(height: 6.h),
+                      Container(
+                        width: 65.w,
+                        height: 22.h,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(3),
+                            border: Border.all(color: kbookMarkColor)),
+                        child: const Center(child: Text('box')),
+                      ),
+                      SizedBox(height: 10.h),
                       SizedBox(
                         width: media.width / 1.57,
                         child: const Text(
-                            'Having spent most of her life exploring the jungle, nothing could prepare Dora for her most dangerous adventure yet — high school. '),
+                          'Having spent most of her life exploring the jungle, nothing could prepare Dora for her most dangerous adventure yet — high school. ',
+                          maxLines: 6,
+                          overflow: TextOverflow.ellipsis,
+                        ),
                       ),
                       SizedBox(height: 3.h),
                       const CustomMovieRate(rate: '7.7')
