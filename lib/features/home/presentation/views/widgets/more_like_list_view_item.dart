@@ -1,6 +1,6 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:movie/core/widget/custom_cached_network_image.dart';
 
 import '../../../../../core/utils/color.dart';
 import 'custom_movie_rate.dart';
@@ -25,17 +25,11 @@ class MoreLikeListViewItem extends StatelessWidget {
                   borderRadius: const BorderRadius.only(
                       topLeft: Radius.circular(8),
                       topRight: Radius.circular(8)),
-                  child: CachedNetworkImage(
+                  child: CustomCachedNetworkImage(
                     height: 95.h,
                     width: 105.w,
                     imageUrl:
                         'https://img.freepik.com/free-photo/purple-osteospermum-daisy-flower_1373-16.jpg',
-                    fit: BoxFit.cover,
-                    filterQuality: FilterQuality.high,
-                    placeholder: (context, url) =>
-                        const Center(child: CircularProgressIndicator()),
-                    errorWidget: (context, url, error) =>
-                        const Center(child: Icon(Icons.error)),
                   )),
               SizedBox(
                 height: 3.h,

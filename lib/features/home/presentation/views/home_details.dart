@@ -1,10 +1,10 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movie/core/utils/api_service.dart';
 import 'package:movie/core/utils/constants.dart';
+import 'package:movie/core/widget/custom_cached_network_image.dart';
 import 'package:movie/features/home/data/repos/home%20details%20repo/home_details_repo_impl.dart';
 import 'package:movie/features/home/presentation/manager/Details%20cubit/details_cubit.dart';
 import 'package:movie/features/home/presentation/views/widgets/custom_movie_rate.dart';
@@ -41,16 +41,10 @@ class HomeDetailsView extends StatelessWidget {
               body: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  CachedNetworkImage(
+                  CustomCachedNetworkImage(
                     imageUrl: '$apiImage${cubit.detailsModel.backdropPath}',
                     height: 190.h,
                     width: double.infinity,
-                    fit: BoxFit.cover,
-                    filterQuality: FilterQuality.high,
-                    placeholder: (context, url) =>
-                        const Center(child: CircularProgressIndicator()),
-                    errorWidget: (context, url, error) =>
-                        const Center(child: Icon(Icons.error)),
                   ),
                   SizedBox(height: media.height / 100.h),
                   Text(cubit.detailsModel.title ?? ''),
@@ -69,17 +63,11 @@ class HomeDetailsView extends StatelessWidget {
                             children: [
                               Hero(
                                 tag: 'hero${sendDataToDetailsView.hero}',
-                                child: CachedNetworkImage(
+                                child: CustomCachedNetworkImage(
                                   height: 140.h,
                                   width: 100.w,
                                   imageUrl:
                                       '$apiImage${cubit.detailsModel.posterPath ?? ''}',
-                                  fit: BoxFit.cover,
-                                  filterQuality: FilterQuality.high,
-                                  placeholder: (context, url) => const Center(
-                                      child: CircularProgressIndicator()),
-                                  errorWidget: (context, url, error) =>
-                                      const Center(child: Icon(Icons.error)),
                                 ),
                               ),
                               Image(

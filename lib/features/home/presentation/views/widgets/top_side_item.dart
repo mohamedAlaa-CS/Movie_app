@@ -1,7 +1,7 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movie/core/utils/constants.dart';
+import 'package:movie/core/widget/custom_cached_network_image.dart';
 import 'package:movie/features/home/data/model/popular_model.dart';
 
 import '../../../../../core/utils/color.dart';
@@ -15,7 +15,8 @@ class TopSideItem extends StatelessWidget {
       {super.key,
       required this.model,
       required this.checked,
-      required this.onTap, required this.index});
+      required this.onTap,
+      required this.index});
 
   @override
   Widget build(BuildContext context) {
@@ -24,17 +25,10 @@ class TopSideItem extends StatelessWidget {
       children: [
         ClipRRect(
           borderRadius: BorderRadius.circular(6),
-          child: CachedNetworkImage(
+          child: CustomCachedNetworkImage(
             imageUrl: '$apiImage${model.backdropPath ?? model.posterPath}',
             height: 150.h,
             width: double.infinity,
-            fit: BoxFit.cover,
-            filterQuality: FilterQuality.high,
-            placeholder: (context, url) =>
-                const Center(child: CircularProgressIndicator()),
-            errorWidget: (context, url, error) => const Center(
-              child: Icon(Icons.error),
-            ),
           ),
         ),
         Positioned(
@@ -46,16 +40,10 @@ class TopSideItem extends StatelessWidget {
               children: [
                 Hero(
                   tag: 'herotop$index',
-                  child: CachedNetworkImage(
+                  child: CustomCachedNetworkImage(
                     imageUrl: '$apiImage${model.posterPath}',
                     height: 130.h,
                     width: 90.w,
-                    fit: BoxFit.cover,
-                    filterQuality: FilterQuality.high,
-                    placeholder: (context, url) =>
-                        const Center(child: CircularProgressIndicator()),
-                    errorWidget: (context, url, error) =>
-                        const Center(child: Icon(Icons.error)),
                   ),
                 ),
                 Image(

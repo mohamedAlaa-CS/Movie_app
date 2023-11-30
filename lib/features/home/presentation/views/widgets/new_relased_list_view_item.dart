@@ -1,7 +1,7 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movie/core/utils/color.dart';
+import 'package:movie/core/widget/custom_cached_network_image.dart';
 import 'package:movie/features/home/data/model/new.model.dart';
 
 import '../../../../../core/utils/constants.dart';
@@ -25,16 +25,10 @@ class NewsRelaseListViewItem extends StatelessWidget {
         children: [
           Hero(
             tag: 'herorelase$index',
-            child: CachedNetworkImage(
+            child: CustomCachedNetworkImage(
               height: 130.h,
               width: 90.w,
               imageUrl: '$apiImage${model.posterPath}',
-              fit: BoxFit.cover,
-              filterQuality: FilterQuality.high,
-              placeholder: (context, url) =>
-                  const Center(child: CircularProgressIndicator()),
-              errorWidget: (context, url, error) =>
-                  const Center(child: Icon(Icons.error)),
             ),
           ),
           Image(
