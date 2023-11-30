@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:movie/features/home/presentation/manager/New%20Relase%20cubit/new_relase_cubit.dart';
+import 'package:movie/features/home/presentation/views/widgets/recomed_list_view.dart';
 
+import '../home_details.dart';
 import 'new_relased_list_view_item.dart';
 
 class NewRelaseListView extends StatelessWidget {
@@ -27,12 +30,20 @@ class NewRelaseListView extends StatelessWidget {
                   ),
               scrollDirection: Axis.horizontal,
               itemCount: cubit.newRelaseList.length,
-              itemBuilder: (contetxt, index) => NewsRelaseListViewItem(
-                    model: cubit.newRelaseList[index],
-                    checked: cubit.selectedItemToWatchList.contains(index),
+              itemBuilder: (contetxt, index) => InkWell(
                     onTap: () {
-                      cubit.changeWatchList(index);
+                      GoRouter.of(context).push(HomeDetailsView.routeName,
+                          extra: SendDataToDetailsView(
+                              cubit.newRelaseList[index].id!, 'relase$index'));
                     },
+                    child: NewsRelaseListViewItem(
+                      model: cubit.newRelaseList[index],
+                      checked: cubit.selectedItemToWatchList.contains(index),
+                      onTap: () {
+                        cubit.changeWatchList(index);
+                      },
+                      index: index,
+                    ),
                   )),
         );
       },

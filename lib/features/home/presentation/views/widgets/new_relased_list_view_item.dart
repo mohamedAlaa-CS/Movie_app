@@ -9,28 +9,33 @@ import '../../../../../core/utils/constants.dart';
 class NewsRelaseListViewItem extends StatelessWidget {
   final bool checked;
   final NewModel model;
+  final int index;
   final void Function() onTap;
   const NewsRelaseListViewItem(
       {super.key,
       required this.model,
       required this.checked,
-      required this.onTap});
+      required this.onTap,
+      required this.index});
   @override
   Widget build(BuildContext context) {
     return ClipRRect(
       borderRadius: BorderRadius.circular(8),
       child: Stack(
         children: [
-          CachedNetworkImage(
-            height: 130.h,
-            width: 90.w,
-            imageUrl: '$apiImage${model.posterPath}',
-            fit: BoxFit.cover,
-            filterQuality: FilterQuality.high,
-            placeholder: (context, url) =>
-                const Center(child: CircularProgressIndicator()),
-            errorWidget: (context, url, error) =>
-                const Center(child: Icon(Icons.error)),
+          Hero(
+            tag: 'herorelase$index',
+            child: CachedNetworkImage(
+              height: 130.h,
+              width: 90.w,
+              imageUrl: '$apiImage${model.posterPath}',
+              fit: BoxFit.cover,
+              filterQuality: FilterQuality.high,
+              placeholder: (context, url) =>
+                  const Center(child: CircularProgressIndicator()),
+              errorWidget: (context, url, error) =>
+                  const Center(child: Icon(Icons.error)),
+            ),
           ),
           Image(
             image: const AssetImage('assets/images/bookmark_add.png'),

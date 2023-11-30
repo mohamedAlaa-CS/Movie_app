@@ -68,7 +68,7 @@ class HomeDetailsView extends StatelessWidget {
                           child: Stack(
                             children: [
                               Hero(
-                                tag: 'hero${sendDataToDetailsView.index}',
+                                tag: 'hero${sendDataToDetailsView.hero}',
                                 child: CachedNetworkImage(
                                   height: 140.h,
                                   width: 100.w,

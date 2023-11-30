@@ -9,12 +9,13 @@ import '../../../../../core/utils/color.dart';
 class TopSideItem extends StatelessWidget {
   final void Function() onTap;
   final PopularModel model;
+  final int index;
   final bool checked;
   const TopSideItem(
       {super.key,
       required this.model,
       required this.checked,
-      required this.onTap});
+      required this.onTap, required this.index});
 
   @override
   Widget build(BuildContext context) {
@@ -43,16 +44,19 @@ class TopSideItem extends StatelessWidget {
             borderRadius: BorderRadius.circular(8),
             child: Stack(
               children: [
-                CachedNetworkImage(
-                  imageUrl: '$apiImage${model.posterPath}',
-                  height: 130.h,
-                  width: 90.w,
-                  fit: BoxFit.cover,
-                  filterQuality: FilterQuality.high,
-                  placeholder: (context, url) =>
-                      const Center(child: CircularProgressIndicator()),
-                  errorWidget: (context, url, error) =>
-                      const Center(child: Icon(Icons.error)),
+                Hero(
+                  tag: 'herotop$index',
+                  child: CachedNetworkImage(
+                    imageUrl: '$apiImage${model.posterPath}',
+                    height: 130.h,
+                    width: 90.w,
+                    fit: BoxFit.cover,
+                    filterQuality: FilterQuality.high,
+                    placeholder: (context, url) =>
+                        const Center(child: CircularProgressIndicator()),
+                    errorWidget: (context, url, error) =>
+                        const Center(child: Icon(Icons.error)),
+                  ),
                 ),
                 Image(
                   image: const AssetImage('assets/images/bookmark_add.png'),

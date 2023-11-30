@@ -30,7 +30,7 @@ class RecomendListView extends StatelessWidget {
                     onTap: () {
                       GoRouter.of(context).push(HomeDetailsView.routeName,
                           extra: SendDataToDetailsView(
-                              cubit.recomendMovieList[index].id!, index));
+                              cubit.recomendMovieList[index].id!, 'recomend$index'));
                     },
                     child: RecomendedListViewItem(
                       index: index,
@@ -52,7 +52,7 @@ class RecomendListView extends StatelessWidget {
 
 class SendDataToDetailsView {
   final int id;
-  final int index;
+  final String  hero;
 
-  SendDataToDetailsView(this.id, this.index);
+  SendDataToDetailsView(this.id, this.hero, );
 }

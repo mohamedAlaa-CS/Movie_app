@@ -36,7 +36,7 @@ class RecomendedListViewItem extends StatelessWidget {
                       topLeft: Radius.circular(8),
                       topRight: Radius.circular(8)),
                   child: Hero(
-                    tag: 'hero$index',
+                    tag: 'herorecomend$index',
                     child: CachedNetworkImage(
                       height: 95.h,
                       width: 105.w,
