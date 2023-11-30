@@ -9,8 +9,9 @@ import '../../../../core/utils/color.dart';
 
 class HomeDetailsView extends StatelessWidget {
   static const String routeName = '/home_details_view';
-  HomeDetailsView({super.key});
-  bool checked = false;
+  const HomeDetailsView({super.key, required this.id});
+  final int id;
+  final bool checked = false;
   @override
   Widget build(BuildContext context) {
     var media = MediaQuery.of(context).size;

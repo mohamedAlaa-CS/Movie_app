@@ -28,7 +28,8 @@ class RecomendListView extends StatelessWidget {
               scrollDirection: Axis.horizontal,
               itemBuilder: (context, index) => InkWell(
                     onTap: () {
-                      GoRouter.of(context).push(HomeDetailsView.routeName);
+                      GoRouter.of(context).push(HomeDetailsView.routeName,
+                          extra: cubit.recomendMovieList[index].id);
                     },
                     child: RecomendedListViewItem(
                       model: cubit.recomendMovieList[index],

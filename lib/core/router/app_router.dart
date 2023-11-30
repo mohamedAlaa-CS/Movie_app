@@ -46,7 +46,7 @@ class AppRouter {
       ),
       GoRoute(
         path: HomeDetailsView.routeName,
-        builder: (context, state) => HomeDetailsView(),
+        builder: (context, state) => HomeDetailsView(id: state.extra as int),
       ),
     ],
   );
