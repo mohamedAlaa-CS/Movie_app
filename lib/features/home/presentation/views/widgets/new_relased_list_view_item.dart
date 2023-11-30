@@ -11,7 +11,10 @@ class NewsRelaseListViewItem extends StatelessWidget {
   final NewModel model;
   final void Function() onTap;
   const NewsRelaseListViewItem(
-      {super.key, required this.model, required this.checked, required this.onTap});
+      {super.key,
+      required this.model,
+      required this.checked,
+      required this.onTap});
   @override
   Widget build(BuildContext context) {
     return ClipRRect(
