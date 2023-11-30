@@ -29,9 +29,11 @@ class RecomendListView extends StatelessWidget {
               itemBuilder: (context, index) => InkWell(
                     onTap: () {
                       GoRouter.of(context).push(HomeDetailsView.routeName,
-                          extra: cubit.recomendMovieList[index].id);
+                          extra: SendDataToDetailsView(
+                              cubit.recomendMovieList[index].id!, index));
                     },
                     child: RecomendedListViewItem(
+                      index: index,
                       model: cubit.recomendMovieList[index],
                       checked: cubit.selectItemToWatchListView.contains(index),
                       onTap: () {
@@ -46,4 +48,11 @@ class RecomendListView extends StatelessWidget {
       },
     );
   }
+}
+
+class SendDataToDetailsView {
+  final int id;
+  final int index;
+
+  SendDataToDetailsView(this.id, this.index);
 }

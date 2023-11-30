@@ -11,11 +11,12 @@ class RecomendedListViewItem extends StatelessWidget {
   final void Function() onTap;
   final RecomendModel model;
   final bool checked;
+  final int index;
   const RecomendedListViewItem(
       {super.key,
       required this.model,
       required this.checked,
-      required this.onTap});
+      required this.onTap, required this.index});
 
   @override
   Widget build(BuildContext context) {
@@ -34,16 +35,19 @@ class RecomendedListViewItem extends StatelessWidget {
                   borderRadius: const BorderRadius.only(
                       topLeft: Radius.circular(8),
                       topRight: Radius.circular(8)),
-                  child: CachedNetworkImage(
-                    height: 95.h,
-                    width: 105.w,
-                    imageUrl: '$apiImage${model.posterPath}',
-                    fit: BoxFit.cover,
-                    filterQuality: FilterQuality.high,
-                    placeholder: (context, url) =>
-                        const Center(child: CircularProgressIndicator()),
-                    errorWidget: (context, url, error) =>
-                        const Center(child: Icon(Icons.error)),
+                  child: Hero(
+                    tag: 'hero$index',
+                    child: CachedNetworkImage(
+                      height: 95.h,
+                      width: 105.w,
+                      imageUrl: '$apiImage${model.posterPath}',
+                      fit: BoxFit.cover,
+                      filterQuality: FilterQuality.high,
+                      placeholder: (context, url) =>
+                          const Center(child: CircularProgressIndicator()),
+                      errorWidget: (context, url, error) =>
+                          const Center(child: Icon(Icons.error)),
+                    ),
                   )),
               SizedBox(
                 height: 3.h,

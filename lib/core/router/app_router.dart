@@ -5,6 +5,7 @@ import 'package:movie/features/home%20layout/presentation/manager/home_layout_cu
 import 'package:movie/features/home%20layout/presentation/views/home_layout.dart';
 import 'package:movie/features/home/presentation/views/home_details.dart';
 import 'package:movie/features/home/presentation/views/home_view.dart';
+import 'package:movie/features/home/presentation/views/widgets/recomed_list_view.dart';
 import 'package:movie/features/onboarding/presentation/view/onboarding_view.dart';
 import 'package:movie/features/search/presentation/views/shearch_view.dart';
 import 'package:movie/features/splash/presentaion/view/spalsh_view.dart';
@@ -46,7 +47,8 @@ class AppRouter {
       ),
       GoRoute(
         path: HomeDetailsView.routeName,
-        builder: (context, state) => HomeDetailsView(id: state.extra as int),
+        builder: (context, state) => HomeDetailsView(
+            sendDataToDetailsView: state.extra as SendDataToDetailsView),
       ),
     ],
   );
