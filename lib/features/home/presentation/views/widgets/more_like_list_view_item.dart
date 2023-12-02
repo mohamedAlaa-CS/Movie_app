@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:movie/core/utils/constants.dart';
 import 'package:movie/core/widget/custom_cached_network_image.dart';
+import 'package:movie/features/home/data/model/similar_movie.dart';
 
 import '../../../../../core/utils/color.dart';
 import 'custom_movie_rate.dart';
 
 class MoreLikeListViewItem extends StatelessWidget {
-  const MoreLikeListViewItem({super.key});
-
+  const MoreLikeListViewItem({super.key, required this.model});
+  final SimilarMovieModel model;
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -28,8 +30,7 @@ class MoreLikeListViewItem extends StatelessWidget {
                   child: CustomCachedNetworkImage(
                     height: 95.h,
                     width: 105.w,
-                    imageUrl:
-                        'https://img.freepik.com/free-photo/purple-osteospermum-daisy-flower_1373-16.jpg',
+                    imageUrl: '$apiImage${model.posterPath ?? model.backdropPath ??'https://cdn0.iconfinder.com/data/icons/shift-interfaces/32/Error-512.png' }',
                   )),
               SizedBox(
                 height: 3.h,
@@ -39,11 +40,11 @@ class MoreLikeListViewItem extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const CustomMovieRate(rate: '7.7'),
+                    CustomMovieRate(rate: '${model.voteAverage ?? ''}'),
                     SizedBox(
                       width: MediaQuery.of(context).size.width / 2,
                       child: Text(
-                        'Deadpool 2',
+                        model.title ?? '',
                         style: TextStyle(
                             fontSize: 11.sp, fontWeight: FontWeight.w500),
                         maxLines: 1,
@@ -51,7 +52,7 @@ class MoreLikeListViewItem extends StatelessWidget {
                       ),
                     ),
                     Text(
-                      '2018  R  1h 59m',
+                      model.releaseDate ?? '',
                       style: TextStyle(fontSize: 10.sp),
                     )
                   ],

@@ -3,8 +3,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movie/features/home/presentation/views/widgets/more_like_list_view.dart';
 
 class MoreLikeThisSection extends StatelessWidget {
-  const MoreLikeThisSection({super.key});
-
+  const MoreLikeThisSection({super.key, required this.id});
+  final int id;
   @override
   Widget build(BuildContext context) {
     var media = MediaQuery.of(context).size;
@@ -22,7 +22,9 @@ class MoreLikeThisSection extends StatelessWidget {
           SizedBox(
             height: 5.h,
           ),
-          const MoreLikeListView()
+          MoreLikeListView(
+            id: id,
+          )
         ],
       ),
     );

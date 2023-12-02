@@ -134,7 +134,7 @@ class HomeDetailsView extends StatelessWidget {
                     ),
                   ),
                   SizedBox(height: 10.h),
-                  const MoreLikeThisSection(),
+                   MoreLikeThisSection(id:sendDataToDetailsView.id),
                   // const RecomendedSection()
                 ],
               ),
