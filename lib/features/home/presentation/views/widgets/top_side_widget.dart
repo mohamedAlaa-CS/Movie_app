@@ -25,16 +25,17 @@ class TopSideWidget extends StatelessWidget {
         return CarouselSlider.builder(
           itemBuilder: (context, index, realIndex) => InkWell(
             onTap: () {
-                      GoRouter.of(context).push(HomeDetailsView.routeName,
-                          extra: SendDataToDetailsView(
-                              cubit.popularMovieList[index].id!, 'top$index'));
-                    },
+              GoRouter.of(context).push(HomeDetailsView.routeName,
+                  extra: SendDataToDetailsView(
+                      cubit.popularMovieList[index].id!, 'top$index'));
+            },
             child: TopSideItem(
               model: cubit.popularMovieList[index],
               checked: cubit.selectedItemToWatchList.contains(index),
               onTap: () {
                 cubit.changeWatchList(index);
-              }, index: index,
+              },
+              index: index,
             ),
           ),
           itemCount: cubit.popularMovieList.length,
