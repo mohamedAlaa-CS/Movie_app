@@ -35,7 +35,7 @@ class AppRouter {
       ),
       GoRoute(
         path: SearchView.routeName,
-        builder: (context, state) => const SearchView(),
+        builder: (context, state) => SearchView(),
       ),
       GoRoute(
         path: BrawserView.routeName,
