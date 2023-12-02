@@ -1,8 +1,27 @@
-import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:movie/features/home/data/model/similar_movie.dart';
+import 'package:movie/features/home/data/repos/home%20details%20repo/home_details_repo.dart';
 
 part 'similar_state.dart';
 
 class SimilarCubit extends Cubit<SimilarState> {
-  SimilarCubit() : super(SimilarInitial());
+  SimilarCubit(this.homeDetailsRepo) : super(SimilarInitial());
+  final HomeDetailsRepo homeDetailsRepo;
+
+  static SimilarCubit get(context) => BlocProvider.of<SimilarCubit>(context);
+
+  //! featch similar movie list
+  List<SimilarMovieModel> similarMovieList = [];
+
+  featchSimailar({required int id}) async {
+    emit(SimilarLoading());
+    var result = await homeDetailsRepo.featchSimilarMovie(id: id);
+    result.fold((failuer) {
+      emit(SimilarFailuer(failuer.errorMessage));
+    }, (similarList) {
+      similarMovieList.addAll(similarList);
+      emit(SimilarSuccess());
+    });
+  }
 }
