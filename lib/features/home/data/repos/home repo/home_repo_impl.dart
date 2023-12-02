@@ -15,7 +15,7 @@ class HomeRepoImpl implements HomeRepo {
   Future<Either<Failure, List<PopularModel>>> featchPopularMovie() async {
     try {
       var data = await apiService.get(
-          endPoint: 'popular?api_key=8b104227bc3518198c861fdf19a3b565');
+          endPoint: 'movie/popular?api_key=8b104227bc3518198c861fdf19a3b565');
       List<PopularModel> popular = [];
       for (var item in data['results']) {
         popular.add(PopularModel.fromJson(item));
@@ -34,7 +34,7 @@ class HomeRepoImpl implements HomeRepo {
   Future<Either<Failure, List<RecomendModel>>> feactchRecomendMovie() async {
     try {
       var data = await apiService.get(
-          endPoint: 'top_rated?api_key=8b104227bc3518198c861fdf19a3b565');
+          endPoint: 'movie/top_rated?api_key=8b104227bc3518198c861fdf19a3b565');
 
       List<RecomendModel> recomendList = [];
       for (var item in data['results']) {
@@ -53,7 +53,7 @@ class HomeRepoImpl implements HomeRepo {
   Future<Either<Failure, List<NewModel>>> featchNewRelase() async {
     try {
       var data = await apiService.get(
-          endPoint: 'now_playing?api_key=8b104227bc3518198c861fdf19a3b565');
+          endPoint: 'movie/now_playing?api_key=8b104227bc3518198c861fdf19a3b565');
       List<NewModel> newRelase = [];
       for (var item in data['results']) {
         newRelase.add(NewModel.fromJson(item));
