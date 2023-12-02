@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
 
-class SimilarMovie extends Equatable {
+class SimilarMovieModel extends Equatable {
   final bool? adult;
   final String? backdropPath;
   final List<int>? genreIds;
@@ -16,7 +16,7 @@ class SimilarMovie extends Equatable {
   final double? voteAverage;
   final int? voteCount;
 
-  const SimilarMovie({
+  const SimilarMovieModel({
     this.adult,
     this.backdropPath,
     this.genreIds,
@@ -33,7 +33,7 @@ class SimilarMovie extends Equatable {
     this.voteCount,
   });
 
-  factory SimilarMovie.fromJson(Map<String, dynamic> json) => SimilarMovie(
+  factory SimilarMovieModel.fromJson(Map<String, dynamic> json) => SimilarMovieModel(
         adult: json['adult'] as bool?,
         backdropPath: json['backdrop_path'] as String?,
         genreIds: json['genre_ids'] as List<int>?,
