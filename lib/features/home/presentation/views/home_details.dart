@@ -47,9 +47,17 @@ class HomeDetailsView extends StatelessWidget {
                     width: double.infinity,
                   ),
                   SizedBox(height: media.height / 100.h),
-                  Text(cubit.detailsModel.title ?? ''),
+                  Text(
+                    cubit.detailsModel.title ?? '',
+                    style:
+                        TextStyle(fontSize: 18.sp, fontWeight: FontWeight.w500),
+                  ),
                   SizedBox(height: media.height / 200.h),
-                  Text(cubit.detailsModel.releaseDate ?? ''),
+                  Text(
+                    cubit.detailsModel.releaseDate ?? '',
+                    style:
+                        TextStyle(fontSize: 10.sp, fontWeight: FontWeight.w400),
+                  ),
                   SizedBox(height: media.height / 30.h),
                   SizedBox(
                     // decoration: const BoxDecoration(color: Colors.red),
@@ -110,6 +118,9 @@ class HomeDetailsView extends StatelessWidget {
                                   cubit.detailsModel.overview ?? '',
                                   maxLines: 6,
                                   overflow: TextOverflow.ellipsis,
+                                  style: TextStyle(
+                                      fontSize: 11.sp,
+                                      fontWeight: FontWeight.bold),
                                 ),
                               ),
                               SizedBox(height: 3.h),
