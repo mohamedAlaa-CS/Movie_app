@@ -8,8 +8,15 @@ import '../../../../../core/utils/color.dart';
 import 'custom_movie_rate.dart';
 
 class MoreLikeListViewItem extends StatelessWidget {
-  const MoreLikeListViewItem({super.key, required this.model});
+  const MoreLikeListViewItem(
+      {super.key,
+      required this.model,
+      required this.checked,
+      required this.ontap, required this.index});
   final SimilarMovieModel model;
+  final bool checked;
+  final void Function() ontap;
+  final int index;
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -27,10 +34,14 @@ class MoreLikeListViewItem extends StatelessWidget {
                   borderRadius: const BorderRadius.only(
                       topLeft: Radius.circular(8),
                       topRight: Radius.circular(8)),
-                  child: CustomCachedNetworkImage(
-                    height: 95.h,
-                    width: 105.w,
-                    imageUrl: '$apiImage${model.posterPath ?? model.backdropPath ??'https://cdn0.iconfinder.com/data/icons/shift-interfaces/32/Error-512.png' }',
+                  child: Hero(
+                    tag: 'herosimilar$index',
+                    child: CustomCachedNetworkImage(
+                      height: 95.h,
+                      width: 105.w,
+                      imageUrl:
+                          '$apiImage${model.posterPath ?? model.backdropPath ?? 'https://cdn0.iconfinder.com/data/icons/shift-interfaces/32/Error-512.png'}',
+                    ),
                   )),
               SizedBox(
                 height: 3.h,
@@ -61,14 +72,14 @@ class MoreLikeListViewItem extends StatelessWidget {
             ],
           ),
         ),
-        const Image(
-          image: AssetImage('assets/images/bookmark_add.png'),
-          color: true ? kPrimaryColor : Color(0xff514F4F),
+        Image(
+          image: const AssetImage('assets/images/bookmark_add.png'),
+          color: checked ? kPrimaryColor : const Color(0xff514F4F),
         ),
         InkWell(
-          onTap: () {},
+          onTap: ontap,
           child: Icon(
-            true ? Icons.check : Icons.add,
+            checked ? Icons.check : Icons.add,
             color: Colors.white,
             size: 22.sp,
           ),

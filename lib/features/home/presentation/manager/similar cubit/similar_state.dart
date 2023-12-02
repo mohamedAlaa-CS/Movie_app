@@ -18,3 +18,7 @@ final class SimilarFailuer extends SimilarState {
 
   const SimilarFailuer(this.errorMessage);
 }
+
+final class SimilarAddTowatchList extends SimilarState {}
+
+final class SimilarRemoveFromWatchList extends SimilarState {}

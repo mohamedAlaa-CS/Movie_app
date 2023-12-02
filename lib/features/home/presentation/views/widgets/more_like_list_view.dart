@@ -7,6 +7,7 @@ import 'package:movie/core/utils/api_service.dart';
 import 'package:movie/features/home/data/repos/home%20details%20repo/home_details_repo_impl.dart';
 import 'package:movie/features/home/presentation/manager/similar%20cubit/similar_cubit.dart';
 import 'package:movie/features/home/presentation/views/widgets/more_like_list_view_item.dart';
+import 'package:movie/features/home/presentation/views/widgets/recomed_list_view.dart';
 
 import '../home_details.dart';
 
@@ -35,10 +36,16 @@ class MoreLikeListView extends StatelessWidget {
                 scrollDirection: Axis.horizontal,
                 itemBuilder: (context, index) => InkWell(
                     onTap: () {
-                      GoRouter.of(context).push(HomeDetailsView.routeName);
+                      GoRouter.of(context).push(HomeDetailsView.routeName,
+                          extra: SendDataToDetailsView(id, 'herosimilar$index'));
                     },
                     child: MoreLikeListViewItem(
                       model: cubit.similarMovieList[index],
+                      checked: cubit.selectedItemToWatchList.contains(index),
+                      ontap: () {
+                        cubit.changeWatchList(index);
+                      },
+                      index: index,
                     )),
                 separatorBuilder: (context, index) =>
                     SizedBox(width: media.width / 22),
