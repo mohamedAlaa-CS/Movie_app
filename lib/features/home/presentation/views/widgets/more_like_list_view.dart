@@ -29,7 +29,6 @@ class MoreLikeListView extends StatelessWidget {
           if (state is SimilarFailuer) {
             return Center(child: Text(state.errorMessage));
           }
-          print(id);
           return SizedBox(
             height: 140.h,
             child: ListView.separated(
@@ -37,7 +36,9 @@ class MoreLikeListView extends StatelessWidget {
                 itemBuilder: (context, index) => InkWell(
                     onTap: () {
                       GoRouter.of(context).push(HomeDetailsView.routeName,
-                          extra: SendDataToDetailsView(id, 'herosimilar$index'));
+                          extra: SendDataToDetailsView(
+                              cubit.similarMovieList[index].id!,
+                              'similar$index'));
                     },
                     child: MoreLikeListViewItem(
                       model: cubit.similarMovieList[index],

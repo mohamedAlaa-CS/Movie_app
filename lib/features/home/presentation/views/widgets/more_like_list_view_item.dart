@@ -12,7 +12,8 @@ class MoreLikeListViewItem extends StatelessWidget {
       {super.key,
       required this.model,
       required this.checked,
-      required this.ontap, required this.index});
+      required this.ontap,
+      required this.index});
   final SimilarMovieModel model;
   final bool checked;
   final void Function() ontap;
@@ -34,14 +35,11 @@ class MoreLikeListViewItem extends StatelessWidget {
                   borderRadius: const BorderRadius.only(
                       topLeft: Radius.circular(8),
                       topRight: Radius.circular(8)),
-                  child: Hero(
-                    tag: 'herosimilar$index',
-                    child: CustomCachedNetworkImage(
-                      height: 95.h,
-                      width: 105.w,
-                      imageUrl:
-                          '$apiImage${model.posterPath ?? model.backdropPath ?? 'https://cdn0.iconfinder.com/data/icons/shift-interfaces/32/Error-512.png'}',
-                    ),
+                  child: CustomCachedNetworkImage(
+                    height: 95.h,
+                    width: 105.w,
+                    imageUrl:
+                        '$apiImage${model.posterPath ?? model.backdropPath ?? 'https://cdn0.iconfinder.com/data/icons/shift-interfaces/32/Error-512.png'}',
                   )),
               SizedBox(
                 height: 3.h,

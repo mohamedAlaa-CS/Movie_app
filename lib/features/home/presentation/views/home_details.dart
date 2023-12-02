@@ -36,6 +36,7 @@ class HomeDetailsView extends StatelessWidget {
               return Center(child: Text(state.errorMessage));
             }
             var cubit = DetailsCubit.get(context);
+            print(sendDataToDetailsView.hero);
             return Scaffold(
               appBar: AppBar(title: Text(cubit.detailsModel.title ?? '')),
               body: Column(
@@ -134,7 +135,7 @@ class HomeDetailsView extends StatelessWidget {
                     ),
                   ),
                   SizedBox(height: 10.h),
-                   MoreLikeThisSection(id:sendDataToDetailsView.id),
+                  MoreLikeThisSection(id: sendDataToDetailsView.id),
                   // const RecomendedSection()
                 ],
               ),
