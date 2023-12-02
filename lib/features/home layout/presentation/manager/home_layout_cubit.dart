@@ -14,7 +14,7 @@ class HomeLayoutCubit extends Cubit<HomeLayoutState> {
   int select = 0;
   List<Widget> views = [
     const HomeView(),
-    const SearchView(),
+    SearchView(),
     const BrawserView(),
     const WatchedListView()
   ];

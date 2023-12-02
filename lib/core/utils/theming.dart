@@ -3,7 +3,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movie/core/utils/color.dart';
 
 ThemeData appTheme = ThemeData(
-  textTheme: Typography(platform: TargetPlatform.iOS).white,
+  brightness: Brightness.dark,
+  //textTheme: Typography(platform: TargetPlatform.iOS).white,
   scaffoldBackgroundColor: kBlackColor,
   floatingActionButtonTheme:
       const FloatingActionButtonThemeData(backgroundColor: kPrimaryColor),
