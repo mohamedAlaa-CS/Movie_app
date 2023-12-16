@@ -7,9 +7,11 @@ import 'package:movie/core/utils/api_service.dart';
 import 'package:movie/features/home/data/repos/home%20repo/home_repo_impl.dart';
 import 'package:movie/features/home/presentation/manager/New%20Relase%20cubit/new_relase_cubit.dart';
 import 'package:movie/features/home/presentation/manager/Recomend%20cubit/recomend_cubit.dart';
+import 'package:movie/features/search/presentation/manager/search%20cubit/search_cubit.dart';
 
 import 'core/utils/theming.dart';
 import 'features/home/presentation/manager/Top side cubit/popular_movie_cubit.dart';
+import 'features/search/data/repos/search_repo_impel.dart';
 
 void main() {
   runApp(const MyApp());
@@ -36,6 +38,9 @@ class MyApp extends StatelessWidget {
           create: (context) => NewRelaseCubit(HomeRepoImpl(ApiService(Dio())))
             ..featchNewRelase(),
         ),
+        BlocProvider(
+          create: (context) => SearchCubit(SearchRepoImple(ApiService(Dio()))),
+        )
       ],
       child: ScreenUtilInit(
         designSize: const Size(360, 690),

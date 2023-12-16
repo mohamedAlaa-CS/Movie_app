@@ -1,11 +1,6 @@
-part of 'search_cubit.dart';
+import 'package:movie/features/search/data/models/search_model.dart';
 
-sealed class SearchState extends Equatable {
-  const SearchState();
-
-  @override
-  List<Object> get props => [];
-}
+class SearchState {}
 
 final class SearchInitial extends SearchState {}
 
@@ -14,7 +9,15 @@ final class SearchLoading extends SearchState {}
 final class SearchFailuer extends SearchState {
   final String errorMessage;
 
-  const SearchFailuer(this.errorMessage);
+  SearchFailuer(this.errorMessage);
 }
 
-final class SearchSuccess extends SearchState {}
+final class SearchSuccess extends SearchState {
+  final List<SearchModel> searchData ;
+
+  SearchSuccess(this.searchData);
+}
+
+final class SearchListIsEmpty extends SearchState {}
+
+final class SearchListNotEmpty extends SearchState {}
