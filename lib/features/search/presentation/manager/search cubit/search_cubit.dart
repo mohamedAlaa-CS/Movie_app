@@ -10,9 +10,8 @@ class SearchCubit extends Cubit<SearchState> {
 
   //! featch search data
   List<SearchModel> searchData = [];
-  bool changeUi = false;
+
   featchSearch({required String query}) async {
-    changeUi = true;
     emit(SearchLoading());
     searchData = [];
     var result = await searchRepo.featchSearch(query: query);
@@ -22,15 +21,5 @@ class SearchCubit extends Cubit<SearchState> {
       searchData.addAll(searchList);
       emit(SearchSuccess(searchList));
     });
-  }
-
-  changeUiInSearch() {
-    if (searchData.isEmpty) {
-      changeUi = false;
-      emit(SearchListIsEmpty());
-    } else {
-      changeUi = true;
-      emit(SearchListNotEmpty());
-    }
   }
 }

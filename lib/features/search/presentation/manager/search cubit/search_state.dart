@@ -13,11 +13,7 @@ final class SearchFailuer extends SearchState {
 }
 
 final class SearchSuccess extends SearchState {
-  final List<SearchModel> searchData ;
+  final List<SearchModel> searchData;
 
   SearchSuccess(this.searchData);
 }
-
-final class SearchListIsEmpty extends SearchState {}
-
-final class SearchListNotEmpty extends SearchState {}

@@ -4,12 +4,13 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:movie/features/search/presentation/manager/search%20cubit/search_cubit.dart';
 import 'package:movie/features/search/presentation/views/widgets/search_list_view.dart';
 
+// ignore: must_be_immutable
 class SearchView extends StatelessWidget {
   static const String routeName = '/search_view';
 
-  SearchView({super.key});
-
   var searchController = TextEditingController();
+
+  SearchView({super.key});
   @override
   Widget build(BuildContext context) {
     var cubit = SearchCubit.get(context);
@@ -21,7 +22,6 @@ class SearchView extends StatelessWidget {
             controller: searchController,
             onChanged: (value) {
               cubit.featchSearch(query: value);
-              // cubit.changeUiInSearch();
             },
             decoration: InputDecoration(
               filled: true,
@@ -50,7 +50,6 @@ class SearchView extends StatelessWidget {
             ),
           ),
           SizedBox(height: media.height / 90),
-          const Image(image: AssetImage('assets/images/onboarding_2.png')),
           const SearchListView()
         ],
       ),
