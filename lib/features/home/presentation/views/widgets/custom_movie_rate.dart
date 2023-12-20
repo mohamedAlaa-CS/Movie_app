@@ -13,7 +13,7 @@ class CustomMovieRate extends StatelessWidget {
         Icon(
           Icons.star,
           color: kPrimaryColor,
-          size: 21.sp,
+          size: 17.sp,
         ),
         SizedBox(
           width: 4.w,

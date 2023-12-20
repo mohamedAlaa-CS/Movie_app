@@ -58,7 +58,7 @@ class RecomendedListViewItem extends StatelessWidget {
                       child: Text(
                         model.title ?? '',
                         style: TextStyle(
-                            fontSize: 11.sp, fontWeight: FontWeight.w500),
+                            fontSize: 10.sp, fontWeight: FontWeight.w500),
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
                       ),
