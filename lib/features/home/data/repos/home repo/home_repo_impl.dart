@@ -53,7 +53,8 @@ class HomeRepoImpl implements HomeRepo {
   Future<Either<Failure, List<NewModel>>> featchNewRelase() async {
     try {
       var data = await apiService.get(
-          endPoint: 'movie/now_playing?api_key=8b104227bc3518198c861fdf19a3b565');
+          endPoint:
+              'movie/now_playing?api_key=8b104227bc3518198c861fdf19a3b565');
       List<NewModel> newRelase = [];
       for (var item in data['results']) {
         newRelase.add(NewModel.fromJson(item));

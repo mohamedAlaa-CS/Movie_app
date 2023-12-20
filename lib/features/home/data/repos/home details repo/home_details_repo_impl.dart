@@ -31,7 +31,8 @@ class HomeDetailsRepoImpl implements HomeDetailsRepo {
       {required int id}) async {
     try {
       var data = await apiService.get(
-          endPoint: 'movie/$id/similar?api_key=8b104227bc3518198c861fdf19a3b565');
+          endPoint:
+              'movie/$id/similar?api_key=8b104227bc3518198c861fdf19a3b565');
       List<SimilarMovieModel> similarList = [];
       for (var item in data['results']) {
         similarList.add(SimilarMovieModel.fromJson(item));
