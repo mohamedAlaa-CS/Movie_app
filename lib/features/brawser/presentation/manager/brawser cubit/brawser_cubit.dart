@@ -6,7 +6,7 @@ import 'package:movie/features/brawser/presentation/manager/brawser%20cubit/braw
 class BrawserCubit extends Cubit<BrawserState> {
   BrawserCubit(this.brawserRepo) : super(BrawserInitial());
   final BrawserRepo brawserRepo;
-  BrawserCubit get(context) => BlocProvider.of(context);
+  static BrawserCubit get(context) => BlocProvider.of(context);
 
   //! fetch category names
   List<CategoryModel> categoryNames = [];

@@ -3,8 +3,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movie/core/utils/assets.dart';
 
 class BrawserGrideViewItem extends StatelessWidget {
-  const BrawserGrideViewItem({super.key});
-
+  const BrawserGrideViewItem({super.key, required this.name});
+  final String name;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -18,7 +18,7 @@ class BrawserGrideViewItem extends StatelessWidget {
       ),
       child: Center(
           child: Text(
-        'Action',
+        name,
         style: TextStyle(
           fontSize: 14.sp,
           fontWeight: FontWeight.w600,

@@ -18,8 +18,8 @@ class BrawserRepoImpel implements BrawserRepo {
       List<CategoryModel> categorydata = [];
       for (var item in data['genres']) {
         categorydata.add(CategoryModel.fromJson(item));
-        return right(categorydata);
       }
+      return right(categorydata);
     } catch (e) {
       if (e is DioException) {
         return left(ServerFailure.fromDioError(e));
