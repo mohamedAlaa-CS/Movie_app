@@ -1,6 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:movie/core/utils/assets.dart';
 
 class CustomCachedNetworkImage extends StatelessWidget {
   const CustomCachedNetworkImage(
@@ -19,10 +18,10 @@ class CustomCachedNetworkImage extends StatelessWidget {
       width: width,
       fit: BoxFit.cover,
       filterQuality: FilterQuality.high,
-      // placeholder: (context, url) =>
-      //  const Center(child: CircularProgressIndicator()),
+      placeholder: (context, url) =>
+          const Center(child: CircularProgressIndicator.adaptive()),
       errorWidget: (context, url, error) =>
-          const Center(child: Image(image: AssetImage(Assets.errorImage))),
+          const Center(child: Icon(Icons.error)),
     );
   }
 }

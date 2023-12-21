@@ -15,7 +15,7 @@ class BrawserCategoryDetails extends StatefulWidget {
 class _BrawserCategoryDetailsState extends State<BrawserCategoryDetails> {
   @override
   void initState() {
-    SearchCubit.get(context).featchSearch(query: widget.query);
+    SearchCubit.get(context).featchCategorySearch(query: widget.query);
     super.initState();
   }
 

@@ -22,4 +22,19 @@ class SearchCubit extends Cubit<SearchState> {
       emit(SearchSuccess(searchList));
     });
   }
+
+  //! featch Category search data
+  List<SearchModel> categorySearchData = [];
+
+  featchCategorySearch({required String query}) async {
+    emit(CategorySearchLoading());
+    searchData = [];
+    var result = await searchRepo.featchSearch(query: query);
+    result.fold((failer) {
+      emit(CategorySearchFailuer(failer.errorMessage));
+    }, (searchList) {
+      categorySearchData.addAll(searchList);
+      emit(CategorySearchSuccess(searchList));
+    });
+  }
 }

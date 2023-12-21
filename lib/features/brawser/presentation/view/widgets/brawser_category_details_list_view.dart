@@ -21,9 +21,9 @@ class BrawserCategoryDetailsListView extends StatelessWidget {
             endIndent: 10.w,
             indent: 10.w,
           ),
-          itemBuilder: (context, index) =>
-              BrawserCategoryDetailsItem(model: cubit.searchData[index]),
-          itemCount: cubit.searchData.length,
+          itemBuilder: (context, index) => BrawserCategoryDetailsItem(
+              model: cubit.categorySearchData[index]),
+          itemCount: cubit.categorySearchData.length,
         );
       },
     );
