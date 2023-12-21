@@ -117,7 +117,7 @@ class HomeDetailsView extends StatelessWidget {
                                 width: media.width / 1.57,
                                 child: Text(
                                   cubit.detailsModel.overview ?? '',
-                                  maxLines: 6,
+                                  maxLines: 4,
                                   overflow: TextOverflow.ellipsis,
                                   style: TextStyle(
                                       fontSize: 11.sp,
