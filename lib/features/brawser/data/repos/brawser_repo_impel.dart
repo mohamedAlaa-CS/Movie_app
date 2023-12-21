@@ -27,7 +27,5 @@ class BrawserRepoImpel implements BrawserRepo {
         return left(ServerFailure(e.toString()));
       }
     }
-
-    throw UnimplementedError();
   }
 }

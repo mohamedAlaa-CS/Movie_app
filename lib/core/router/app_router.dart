@@ -1,5 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:movie/features/brawser/presentation/view/brawser_category_details.dart';
 import 'package:movie/features/brawser/presentation/view/brawser_view.dart';
 import 'package:movie/features/home%20layout/presentation/manager/home_layout_cubit.dart';
 import 'package:movie/features/home%20layout/presentation/views/home_layout.dart';
@@ -49,6 +50,11 @@ class AppRouter {
         path: HomeDetailsView.routeName,
         builder: (context, state) => HomeDetailsView(
             sendDataToDetailsView: state.extra as SendDataToDetailsView),
+      ),
+      GoRoute(
+        path: BrawserCategoryDetails.routeName,
+        builder: (context, state) =>
+            BrawserCategoryDetails(query: state.extra as String),
       ),
     ],
   );
