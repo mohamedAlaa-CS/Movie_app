@@ -52,12 +52,16 @@ class MoreLikeListViewItem extends StatelessWidget {
                     CustomMovieRate(rate: '${model.voteAverage ?? ''}'),
                     SizedBox(
                       width: MediaQuery.of(context).size.width / 2,
-                      child: Text(
-                        model.title ?? '',
-                        style: TextStyle(
-                            fontSize: 11.sp, fontWeight: FontWeight.w500),
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
+                      child: FittedBox(
+                        alignment: AlignmentDirectional.centerStart,
+                        fit: BoxFit.scaleDown,
+                        child: Text(
+                          model.title ?? '',
+                          style: TextStyle(
+                              fontSize: 11.sp, fontWeight: FontWeight.w500),
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                        ),
                       ),
                     ),
                     Text(
