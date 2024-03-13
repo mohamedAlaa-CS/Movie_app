@@ -5,6 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:movie/features/home/presentation/views/widgets/recomed_list_view.dart';
 import 'package:movie/features/home/presentation/views/widgets/top_side_item.dart';
+import 'package:movie/features/home/presentation/views/widgets/top_side_widget_loading.dart';
 
 import '../../manager/Top side cubit/popular_movie_cubit.dart';
 import '../home_details.dart';
@@ -18,7 +19,7 @@ class TopSideWidget extends StatelessWidget {
     return BlocBuilder<PopularMovieCubit, PopularMovieState>(
       builder: (context, state) {
         if (state is PopularMovieLoading) {
-          return const Center(child: CircularProgressIndicator());
+          return const TopSideWidgetLoading();
         } else if (state is PopularMovieFailuer) {
           return Center(child: Text(state.errorMessage));
         }
