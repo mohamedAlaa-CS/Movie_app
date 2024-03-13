@@ -6,6 +6,7 @@ import 'package:movie/features/brawser/presentation/manager/brawser%20cubit/braw
 import 'package:movie/features/brawser/presentation/manager/brawser%20cubit/brawser_state.dart';
 import 'package:movie/features/brawser/presentation/view/brawser_category_details.dart';
 import 'package:movie/features/brawser/presentation/view/widgets/brawser_gride_view_item.dart';
+import 'package:shimmer/shimmer.dart';
 
 class BrawserGrideView extends StatelessWidget {
   const BrawserGrideView({super.key});
@@ -16,6 +17,9 @@ class BrawserGrideView extends StatelessWidget {
     return BlocConsumer<BrawserCubit, BrawserState>(
       listener: (context, state) {},
       builder: (context, state) {
+        if (state is BrawserLoadingState) {
+          return const CustomGrideViewLoading();
+        }
         var cubit = BrawserCubit.get(context);
         return GridView.builder(
           itemCount: cubit.categoryNames.length,
@@ -33,6 +37,35 @@ class BrawserGrideView extends StatelessWidget {
                   name: cubit.categoryNames[index].name ?? '')),
         );
       },
+    );
+  }
+}
+
+class CustomGrideViewLoading extends StatelessWidget {
+  const CustomGrideViewLoading({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Shimmer.fromColors(
+      baseColor: Colors.grey,
+      highlightColor: Colors.blue,
+      child: GridView.builder(
+        itemCount: 16,
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount:
+              (MediaQuery.of(context).orientation == Orientation.portrait)
+                  ? 2
+                  : 3,
+          crossAxisSpacing: 30.w,
+          mainAxisSpacing: 47.h,
+        ),
+        itemBuilder: (context, index) => Container(
+          height: 90.h,
+          width: 158.w,
+          decoration: BoxDecoration(
+              color: Colors.grey, borderRadius: BorderRadius.circular(12)),
+        ),
+      ),
     );
   }
 }

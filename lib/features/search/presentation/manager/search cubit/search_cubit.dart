@@ -28,7 +28,7 @@ class SearchCubit extends Cubit<SearchState> {
 
   featchCategorySearch({required String query}) async {
     emit(CategorySearchLoading());
-    searchData = [];
+    categorySearchData = [];
     var result = await searchRepo.featchSearch(query: query);
     result.fold((failer) {
       emit(CategorySearchFailuer(failer.errorMessage));
