@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:movie/core/widget/custom_loading.dart';
 import 'package:movie/features/home/presentation/manager/New%20Relase%20cubit/new_relase_cubit.dart';
 import 'package:movie/features/home/presentation/views/widgets/recomed_list_view.dart';
 
@@ -17,7 +18,8 @@ class NewRelaseListView extends StatelessWidget {
     return BlocBuilder<NewRelaseCubit, NewRelaseState>(
       builder: (context, state) {
         if (state is NewRelaseLoading) {
-          return const Center(child: CircularProgressIndicator());
+          return SizedBox(
+              height: media.height / 6, child: const CustomLoading());
         }
         if (state is NewRelaseFailuer) {
           return Center(child: Text(state.errorMessage));

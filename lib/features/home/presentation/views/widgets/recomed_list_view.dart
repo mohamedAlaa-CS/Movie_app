@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
+import 'package:movie/core/widget/custom_loading.dart';
 import 'package:movie/features/home/presentation/manager/Recomend%20cubit/recomend_cubit.dart';
 import 'package:movie/features/home/presentation/views/home_details.dart';
 import 'package:movie/features/home/presentation/views/widgets/recomend_list_view_item.dart';
@@ -16,7 +17,7 @@ class RecomendListView extends StatelessWidget {
     return BlocBuilder<RecomendCubit, RecomendState>(
       builder: (context, state) {
         if (state is RecomendLoading) {
-          return const Center(child: CircularProgressIndicator());
+          return SizedBox(height: 140.h, child: const CustomLoading());
         }
         if (state is RecomendFailure) {
           return Center(child: Text(state.errorMessage));
