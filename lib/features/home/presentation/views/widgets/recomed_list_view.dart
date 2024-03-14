@@ -3,6 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:movie/core/widget/custom_loading.dart';
+import 'package:movie/features/home%20layout/presentation/manager/home_layout_cubit.dart';
+import 'package:movie/features/home%20layout/presentation/manager/home_layout_state.dart';
 import 'package:movie/features/home/presentation/manager/Recomend%20cubit/recomend_cubit.dart';
 import 'package:movie/features/home/presentation/views/home_details.dart';
 import 'package:movie/features/home/presentation/views/widgets/recomend_list_view_item.dart';
@@ -34,12 +36,23 @@ class RecomendListView extends StatelessWidget {
                               cubit.recomendMovieList[index].id!,
                               'recomend$index'));
                     },
-                    child: RecomendedListViewItem(
-                      index: index,
-                      model: cubit.recomendMovieList[index],
-                      checked: cubit.selectItemToWatchListView.contains(index),
-                      onTap: () {
-                        cubit.changeWatchList(index);
+                    child: BlocConsumer<HomeLayoutCubit, HomeLayoutState>(
+                      listener: (context, state) {},
+                      builder: (context, state) {
+                        var homeLayoutCubit = HomeLayoutCubit.get(context);
+                        var modelId = cubit.recomendMovieList[index].id;
+                        return RecomendedListViewItem(
+                          index: index,
+                          model: cubit.recomendMovieList[index],
+                          checked: homeLayoutCubit.favItemsID
+                              .contains(modelId.toString()),
+                          onTap: () {
+                            homeLayoutCubit.changeWatchList(
+                              modelId.toString(),
+                              model: cubit.recomendMovieList[index],
+                            );
+                          },
+                        );
                       },
                     ),
                   ),
