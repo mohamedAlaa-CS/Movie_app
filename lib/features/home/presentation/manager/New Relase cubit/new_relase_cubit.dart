@@ -10,18 +10,6 @@ class NewRelaseCubit extends Cubit<NewRelaseState> {
   final HomeRepo homeRepo;
 
   static NewRelaseCubit get(context) => BlocProvider.of(context);
-//! change changeWatchList
-  List<int> selectedItemToWatchList = [];
-
-  changeWatchList(index) {
-    if (selectedItemToWatchList.contains(index)) {
-      emit(NewRelaseRemoveToWactchList());
-      selectedItemToWatchList.remove(index);
-    } else {
-      emit(NewRelaseAddToWactchList());
-      selectedItemToWatchList.add(index);
-    }
-  }
 
 //!featch new relase
   List<NewModel> newRelaseList = [];

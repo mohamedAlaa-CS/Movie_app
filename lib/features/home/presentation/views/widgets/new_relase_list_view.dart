@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:movie/core/widget/custom_loading.dart';
+import 'package:movie/features/home%20layout/presentation/manager/home_layout_cubit.dart';
+import 'package:movie/features/home%20layout/presentation/manager/home_layout_state.dart';
 import 'package:movie/features/home/presentation/manager/New%20Relase%20cubit/new_relase_cubit.dart';
 import 'package:movie/features/home/presentation/views/widgets/recomed_list_view.dart';
 
@@ -38,13 +40,24 @@ class NewRelaseListView extends StatelessWidget {
                           extra: SendDataToDetailsView(
                               cubit.newRelaseList[index].id!, 'relase$index'));
                     },
-                    child: NewsRelaseListViewItem(
-                      model: cubit.newRelaseList[index],
-                      checked: cubit.selectedItemToWatchList.contains(index),
-                      onTap: () {
-                        cubit.changeWatchList(index);
+                    child: BlocConsumer<HomeLayoutCubit, HomeLayoutState>(
+                      listener: (context, state) {},
+                      builder: (context, state) {
+                        var homelayoutCubit = HomeLayoutCubit.get(context);
+                        var modelId = cubit.newRelaseList[index].id;
+                        return NewsRelaseListViewItem(
+                          model: cubit.newRelaseList[index],
+                          checked: homelayoutCubit.favItemsID
+                              .contains(modelId.toString()),
+                          onTap: () {
+                            homelayoutCubit.changeWatchList(
+                              modelId.toString(),
+                              model: cubit.newRelaseList[index],
+                            );
+                          },
+                          index: index,
+                        );
                       },
-                      index: index,
                     ),
                   )),
         );
