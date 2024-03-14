@@ -42,7 +42,10 @@ class TopSideWidget extends StatelessWidget {
                   checked:
                       homeLayoutCubit.favItemsID.contains(itemID.toString()),
                   onTap: () {
-                    homeLayoutCubit.changeWatchList(itemID.toString());
+                    homeLayoutCubit.changeWatchList(
+                      itemID.toString(),
+                      model: cubit.popularMovieList[index],
+                    );
                   },
                   index: index,
                 );

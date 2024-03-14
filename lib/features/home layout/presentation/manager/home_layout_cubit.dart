@@ -39,15 +39,20 @@ class HomeLayoutCubit extends Cubit<HomeLayoutState> {
   ];
 
   Set<String> favItemsID = {};
+  List favRecomendList = [];
 
-  changeWatchList(String index) {
-    if (favItemsID.contains(index)) {
+  changeWatchList(String id, {required model}) {
+    if (favItemsID.contains(id)) {
       emit(HomeLayoutRemoveToWactchListState());
-      favItemsID.remove(index);
+      favItemsID.remove(id);
+      favRecomendList.remove(model);
       print(favItemsID);
+      print('$favRecomendList========');
       print('================================================================');
     } else {
-      favItemsID.add(index);
+      favItemsID.add(id);
+      favRecomendList.add(model);
+      print(favRecomendList);
       emit(HomeLayoutAddToWactchListState());
       print('$favItemsID========');
     }
