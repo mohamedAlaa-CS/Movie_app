@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movie/core/router/app_router.dart';
 import 'package:movie/core/utils/api_service.dart';
+import 'package:movie/features/home%20layout/presentation/manager/home_layout_cubit.dart';
 import 'package:movie/features/home/data/repos/home%20repo/home_repo_impl.dart';
 import 'package:movie/features/home/presentation/manager/New%20Relase%20cubit/new_relase_cubit.dart';
 import 'package:movie/features/home/presentation/manager/Recomend%20cubit/recomend_cubit.dart';
@@ -25,6 +26,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
+        BlocProvider(
+          create: (context) => HomeLayoutCubit(),
+        ),
         BlocProvider(
           create: (context) =>
               PopularMovieCubit(HomeRepoImpl(ApiService(Dio())))
