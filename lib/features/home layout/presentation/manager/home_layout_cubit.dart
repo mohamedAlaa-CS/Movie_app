@@ -16,7 +16,7 @@ class HomeLayoutCubit extends Cubit<HomeLayoutState> {
 
   changeIndex(index) {
     select = index;
-    emit(HomeLayoutChangeStateState());
+    emit(HomeLayoutChangeState());
   }
 
   List<Widget> views = [
@@ -37,4 +37,19 @@ class HomeLayoutCubit extends Cubit<HomeLayoutState> {
         icon: ImageIcon(AssetImage('assets/images/watch_icon.png')),
         label: 'Watchlist'),
   ];
+
+  Set<String> favItemsID = {};
+
+  changeWatchList(String index) {
+    if (favItemsID.contains(index)) {
+      emit(HomeLayoutRemoveToWactchListState());
+      favItemsID.remove(index);
+      print(favItemsID);
+      print('================================================================');
+    } else {
+      favItemsID.add(index);
+      emit(HomeLayoutAddToWactchListState());
+      print('$favItemsID========');
+    }
+  }
 }

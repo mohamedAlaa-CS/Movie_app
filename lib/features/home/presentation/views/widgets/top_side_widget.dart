@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
+import 'package:movie/features/home%20layout/presentation/manager/home_layout_cubit.dart';
+import 'package:movie/features/home%20layout/presentation/manager/home_layout_state.dart';
 import 'package:movie/features/home/presentation/views/widgets/recomed_list_view.dart';
 import 'package:movie/features/home/presentation/views/widgets/top_side_item.dart';
 import 'package:movie/features/home/presentation/views/widgets/top_side_widget_loading.dart';
@@ -30,13 +32,21 @@ class TopSideWidget extends StatelessWidget {
                   extra: SendDataToDetailsView(
                       cubit.popularMovieList[index].id!, 'top$index'));
             },
-            child: TopSideItem(
-              model: cubit.popularMovieList[index],
-              checked: cubit.selectedItemToWatchList.contains(index),
-              onTap: () {
-                cubit.changeWatchList(index);
+            child: BlocConsumer<HomeLayoutCubit, HomeLayoutState>(
+              listener: (context, state) {},
+              builder: (context, state) {
+                var homeLayoutCubit = HomeLayoutCubit.get(context);
+                var itemID = cubit.popularMovieList[index].id;
+                return TopSideItem(
+                  model: cubit.popularMovieList[index],
+                  checked:
+                      homeLayoutCubit.favItemsID.contains(itemID.toString()),
+                  onTap: () {
+                    homeLayoutCubit.changeWatchList(itemID.toString());
+                  },
+                  index: index,
+                );
               },
-              index: index,
             ),
           ),
           itemCount: cubit.popularMovieList.length,
