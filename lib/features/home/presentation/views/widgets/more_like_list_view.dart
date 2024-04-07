@@ -5,6 +5,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:movie/core/utils/api_service.dart';
 import 'package:movie/core/widget/custom_loading.dart';
+import 'package:movie/features/home%20layout/presentation/manager/home_layout_cubit.dart';
+import 'package:movie/features/home%20layout/presentation/manager/home_layout_state.dart';
 import 'package:movie/features/home/data/repos/home%20details%20repo/home_details_repo_impl.dart';
 import 'package:movie/features/home/presentation/manager/similar%20cubit/similar_cubit.dart';
 import 'package:movie/features/home/presentation/views/widgets/more_like_list_view_item.dart';
@@ -39,18 +41,31 @@ class MoreLikeListView extends StatelessWidget {
                 scrollDirection: Axis.horizontal,
                 itemBuilder: (context, index) => InkWell(
                     onTap: () {
-                      GoRouter.of(context).push(HomeDetailsView.routeName,
-                          extra: SendDataToDetailsView(
-                              cubit.similarMovieList[index].id!,
-                              'similar$index'));
+                      GoRouter.of(context).push(
+                        HomeDetailsView.routeName,
+                        extra: SendDataToDetailsView(
+                            cubit.similarMovieList[index].id!, 'similar$index'),
+                      );
                     },
-                    child: MoreLikeListViewItem(
-                      model: cubit.similarMovieList[index],
-                      checked: cubit.selectedItemToWatchList.contains(index),
-                      ontap: () {
-                        cubit.changeWatchList(index);
+                    child: BlocConsumer<HomeLayoutCubit, HomeLayoutState>(
+                      listener: (context, state) {},
+                      builder: (context, state) {
+                        var homeLayoutCubit = HomeLayoutCubit.get(context);
+                        var modelId = cubit.similarMovieList[index].id;
+
+                        return MoreLikeListViewItem(
+                          model: cubit.similarMovieList[index],
+                          checked: homeLayoutCubit.favItemsID
+                              .contains(modelId.toString()),
+                          ontap: () {
+                            homeLayoutCubit.changeWatchList(
+                              modelId.toString(),
+                              model: cubit.similarMovieList[index],
+                            );
+                          },
+                          index: index,
+                        );
                       },
-                      index: index,
                     )),
                 separatorBuilder: (context, index) =>
                     SizedBox(width: media.width / 22),

@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -39,22 +41,26 @@ class HomeLayoutCubit extends Cubit<HomeLayoutState> {
   ];
 
   Set<String> favItemsID = {};
-  List favRecomendList = [];
+  Set<dynamic> favRecomendList = {};
+  // List<dynamic> favRecomendList = [];
 
   changeWatchList(String id, {required model}) {
     if (favItemsID.contains(id)) {
-      emit(HomeLayoutRemoveToWactchListState());
       favItemsID.remove(id);
       favRecomendList.remove(model);
-      print(favItemsID);
-      print('$favRecomendList========');
-      print('================================================================');
+
+      log(favItemsID.toString());
+      log(favRecomendList.toString());
+      emit(HomeLayoutRemoveToWactchListState());
     } else {
       favItemsID.add(id);
-      favRecomendList.add(model);
-      print(favRecomendList);
+      if (!favRecomendList.contains(model)) {
+        favRecomendList.add(model);
+      }
+
+      log(favItemsID.toString());
+      log(favRecomendList.toString());
       emit(HomeLayoutAddToWactchListState());
-      print('$favItemsID========');
     }
   }
 }

@@ -12,17 +12,17 @@ class SimilarCubit extends Cubit<SimilarState> {
   static SimilarCubit get(context) => BlocProvider.of<SimilarCubit>(context);
 
   //! change changeWatchList
-  List<int> selectedItemToWatchList = [];
+  // List<int> selectedItemToWatchList = [];
 
-  changeWatchList(index) {
-    if (selectedItemToWatchList.contains(index)) {
-      selectedItemToWatchList.remove(index);
-      emit(SimilarRemoveFromWatchList());
-    } else {
-      selectedItemToWatchList.add(index);
-      emit(SimilarAddTowatchList());
-    }
-  }
+  // changeWatchList(index) {
+  //   if (selectedItemToWatchList.contains(index)) {
+  //     selectedItemToWatchList.remove(index);
+  //     emit(SimilarRemoveFromWatchList());
+  //   } else {
+  //     selectedItemToWatchList.add(index);
+  //     emit(SimilarAddTowatchList());
+  //   }
+  // }
 
   //! featch similar movie list
   List<SimilarMovieModel> similarMovieList = [];
