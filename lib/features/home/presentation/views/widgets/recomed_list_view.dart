@@ -26,7 +26,7 @@ class RecomendListView extends StatelessWidget {
         }
 
         return SizedBox(
-          height: 140.h,
+          height: media.height / 4.4,
           child: ListView.separated(
               scrollDirection: Axis.horizontal,
               itemBuilder: (context, index) => InkWell(
@@ -56,8 +56,7 @@ class RecomendListView extends StatelessWidget {
                       },
                     ),
                   ),
-              separatorBuilder: (context, index) =>
-                  SizedBox(width: media.width / 22),
+              separatorBuilder: (context, index) => const SizedBox(width: 10),
               itemCount: cubit.recomendMovieList.length),
         );
       },

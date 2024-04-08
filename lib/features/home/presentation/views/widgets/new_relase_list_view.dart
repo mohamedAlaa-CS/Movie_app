@@ -29,9 +29,7 @@ class NewRelaseListView extends StatelessWidget {
         return SizedBox(
           height: media.height / 6,
           child: ListView.separated(
-              separatorBuilder: (context, index) => SizedBox(
-                    width: media.width / 32,
-                  ),
+              separatorBuilder: (context, index) => const SizedBox(width: 10),
               scrollDirection: Axis.horizontal,
               itemCount: cubit.newRelaseList.length,
               itemBuilder: (contetxt, index) => InkWell(

@@ -19,7 +19,6 @@ class MoreLikeListView extends StatelessWidget {
   final int id;
   @override
   Widget build(BuildContext context) {
-    var media = MediaQuery.of(context).size;
     return BlocProvider(
       create: (context) => SimilarCubit(HomeDetailsRepoImpl(ApiService(Dio())))
         ..featchSimailar(id: id),
@@ -67,8 +66,7 @@ class MoreLikeListView extends StatelessWidget {
                         );
                       },
                     )),
-                separatorBuilder: (context, index) =>
-                    SizedBox(width: media.width / 22),
+                separatorBuilder: (context, index) => const SizedBox(width: 10),
                 itemCount: cubit.similarMovieList.length),
           );
         },

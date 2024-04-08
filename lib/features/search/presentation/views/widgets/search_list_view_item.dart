@@ -15,17 +15,21 @@ class SearchListViewItem extends StatelessWidget {
       child: Row(
         children: [
           CustomCachedNetworkImage(
-              imageUrl: '$apiImage${model.posterPath}',
-              height: 89.h,
-              width: 100.w),
-          SizedBox(
-            width: media.width / 35,
+            imageUrl: '$apiImage${model.posterPath}',
+            height: 89.h,
+            width: 100.w,
+          ),
+          const SizedBox(
+            width: 10,
           ),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              SizedBox(
-                width: media.width / 1.8,
+              Container(
+                constraints: BoxConstraints(
+                  maxWidth: media.width / 1.7,
+                ),
                 child: Text(
                   model.title ?? '',
                   style:
@@ -34,16 +38,18 @@ class SearchListViewItem extends StatelessWidget {
                   overflow: TextOverflow.ellipsis,
                 ),
               ),
-              SizedBox(height: media.height / 110),
+              const SizedBox(height: 10),
               Text(
                 model.releaseDate ?? '',
                 style: TextStyle(fontSize: 12.sp),
                 maxLines: 2,
                 overflow: TextOverflow.ellipsis,
               ),
-              SizedBox(height: media.height / 150),
-              SizedBox(
-                width: media.width / 1.7,
+              const SizedBox(height: 5),
+              Container(
+                constraints: BoxConstraints(
+                  maxWidth: media.width / 1.7,
+                ),
                 child: Text(
                   model.overview ?? '',
                   style: TextStyle(fontSize: 12.sp),

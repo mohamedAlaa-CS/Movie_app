@@ -51,7 +51,7 @@ class SearchView extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(height: media.height / 90),
+            const SizedBox(height: 10),
             const SearchListView()
           ],
         ),

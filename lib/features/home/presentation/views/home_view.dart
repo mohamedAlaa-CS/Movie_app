@@ -10,18 +10,23 @@ class HomeView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var media = MediaQuery.of(context).size;
-    return SafeArea(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const TopSideWidget(),
-          SizedBox(height: media.height / 40),
-          const NewRelaseSection(),
-          SizedBox(height: media.height / 50),
-          const RecomendedSection()
-        ],
-      ),
+    return const SafeArea(
+      child:
+          CustomScrollView(physics: NeverScrollableScrollPhysics(), slivers: [
+        SliverFillRemaining(
+          hasScrollBody: false,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              TopSideWidget(),
+              SizedBox(height: 30),
+              NewRelaseSection(),
+              SizedBox(height: 20),
+              RecomendedSection()
+            ],
+          ),
+        )
+      ]),
     );
   }
 }

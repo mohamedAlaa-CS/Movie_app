@@ -7,12 +7,11 @@ class RecomendedSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var media = MediaQuery.of(context).size;
     return Container(
       width: double.infinity,
-      height: media.height / 3.7,
       color: const Color(0xff282A28),
-      padding: EdgeInsets.only(left: 10.w),
+      padding:
+          EdgeInsets.only(left: 10.w, top: 10.h, right: 10.w, bottom: 13.h),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.start,
