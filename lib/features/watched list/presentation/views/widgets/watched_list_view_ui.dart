@@ -14,6 +14,16 @@ class WatchListViewUi extends StatelessWidget {
       listener: (context, state) {},
       builder: (context, state) {
         var cubit = HomeLayoutCubit.get(context);
+        if (cubit.favRecomendList.isEmpty) {
+          return const Expanded(
+            child: Center(
+              child: Text(
+                'No Data Found',
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.w400),
+              ),
+            ),
+          );
+        }
         return Expanded(
           child: ListView.separated(
             separatorBuilder: (context, index) => Divider(

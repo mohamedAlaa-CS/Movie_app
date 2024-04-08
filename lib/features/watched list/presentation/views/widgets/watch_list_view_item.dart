@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:movie/core/utils/color.dart';
 import 'package:movie/core/utils/constants.dart';
 import 'package:movie/core/widget/custom_cached_network_image.dart';
 import 'package:movie/features/home%20layout/presentation/manager/home_layout_cubit.dart';
@@ -65,7 +66,10 @@ class WatchListListViewItem extends StatelessWidget {
               )
             ],
           ),
-          const Image(image: AssetImage('assets/images/bookmark_add.png')),
+          const Image(
+            image: AssetImage('assets/images/bookmark_add.png'),
+            color: kPrimaryColor,
+          ),
           BlocConsumer<HomeLayoutCubit, HomeLayoutState>(
             listener: (context, state) {},
             builder: (context, state) {

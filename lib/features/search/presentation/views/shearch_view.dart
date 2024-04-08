@@ -16,42 +16,45 @@ class SearchView extends StatelessWidget {
     var cubit = SearchCubit.get(context);
     var media = MediaQuery.of(context).size;
     return SafeArea(
-      child: Column(
-        children: [
-          TextFormField(
-            controller: searchController,
-            onChanged: (value) {
-              cubit.featchSearch(query: value);
-            },
-            decoration: InputDecoration(
-              filled: true,
-              fillColor: const Color(0xff514F4F),
-              hintText: 'Search',
-              hintStyle: TextStyle(
+      child: Padding(
+        padding: const EdgeInsets.all(10.0),
+        child: Column(
+          children: [
+            TextFormField(
+              controller: searchController,
+              onChanged: (value) {
+                cubit.featchSearch(query: value);
+              },
+              decoration: InputDecoration(
+                filled: true,
+                fillColor: const Color(0xff514F4F),
+                hintText: 'Search',
+                hintStyle: TextStyle(
+                    color: Colors.white,
+                    fontSize: 15.sp,
+                    fontWeight: FontWeight.w500),
+                prefixIcon: IconButton(
+                  icon: const Icon(
+                    FontAwesomeIcons.magnifyingGlass,
+                  ),
                   color: Colors.white,
-                  fontSize: 15.sp,
-                  fontWeight: FontWeight.w500),
-              prefixIcon: IconButton(
-                icon: const Icon(
-                  FontAwesomeIcons.magnifyingGlass,
+                  onPressed: () {},
                 ),
-                color: Colors.white,
-                onPressed: () {},
-              ),
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(16),
-              ),
-              focusedBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(16),
-              ),
-              enabledBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(16),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(16),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(16),
+                ),
+                enabledBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(16),
+                ),
               ),
             ),
-          ),
-          SizedBox(height: media.height / 90),
-          const SearchListView()
-        ],
+            SizedBox(height: media.height / 90),
+            const SearchListView()
+          ],
+        ),
       ),
     );
   }

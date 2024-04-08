@@ -17,7 +17,7 @@ class SearchListViewItem extends StatelessWidget {
           CustomCachedNetworkImage(
               imageUrl: '$apiImage${model.posterPath}',
               height: 89.h,
-              width: 140.w),
+              width: 100.w),
           SizedBox(
             width: media.width / 35,
           ),
@@ -43,7 +43,7 @@ class SearchListViewItem extends StatelessWidget {
               ),
               SizedBox(height: media.height / 150),
               SizedBox(
-                width: media.width / 1.8,
+                width: media.width / 1.7,
                 child: Text(
                   model.overview ?? '',
                   style: TextStyle(fontSize: 12.sp),

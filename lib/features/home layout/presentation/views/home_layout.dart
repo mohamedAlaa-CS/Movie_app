@@ -14,15 +14,17 @@ class HomeLayoutView extends StatelessWidget {
     return BlocConsumer<HomeLayoutCubit, HomeLayoutState>(
       listener: (context, state) {},
       builder: (context, state) {
-        return Scaffold(
-          bottomNavigationBar: BottomNavigationBar(
-            currentIndex: cubit.select,
-            onTap: (value) {
-              cubit.changeIndex(value);
-            },
-            items: cubit.bottomItems,
+        return SafeArea(
+          child: Scaffold(
+            bottomNavigationBar: BottomNavigationBar(
+              currentIndex: cubit.select,
+              onTap: (value) {
+                cubit.changeIndex(value);
+              },
+              items: cubit.bottomItems,
+            ),
+            body: cubit.views[cubit.select],
           ),
-          body: cubit.views[cubit.select],
         );
       },
     );
