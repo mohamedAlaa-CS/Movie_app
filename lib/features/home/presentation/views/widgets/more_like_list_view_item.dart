@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movie/core/utils/constants.dart';
 import 'package:movie/core/widget/custom_cached_network_image.dart';
-import 'package:movie/features/home/data/model/similar_movie.dart';
+import 'package:movie/models/movie_model.dart';
 
 import '../../../../../core/utils/color.dart';
 import 'custom_movie_rate.dart';
@@ -14,7 +14,7 @@ class MoreLikeListViewItem extends StatelessWidget {
       required this.checked,
       required this.ontap,
       required this.index});
-  final SimilarMovieModel model;
+  final MovieModel model;
   final bool checked;
   final void Function() ontap;
   final int index;

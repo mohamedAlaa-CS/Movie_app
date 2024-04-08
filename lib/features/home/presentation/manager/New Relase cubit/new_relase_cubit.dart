@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:movie/features/home/data/model/new.model.dart';
 import 'package:movie/features/home/data/repos/home%20repo/home_repo.dart';
+import 'package:movie/models/movie_model.dart';
 
 part 'new_relase_state.dart';
 
@@ -12,7 +12,7 @@ class NewRelaseCubit extends Cubit<NewRelaseState> {
   static NewRelaseCubit get(context) => BlocProvider.of(context);
 
 //!featch new relase
-  List<NewModel> newRelaseList = [];
+  List<MovieModel> newRelaseList = [];
 
   featchNewRelase() async {
     emit(NewRelaseLoading());

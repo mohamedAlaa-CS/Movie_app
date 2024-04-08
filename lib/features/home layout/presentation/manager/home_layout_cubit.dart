@@ -8,6 +8,7 @@ import 'package:movie/features/home%20layout/presentation/manager/home_layout_st
 import 'package:movie/features/home/presentation/views/home_view.dart';
 import 'package:movie/features/search/presentation/views/shearch_view.dart';
 import 'package:movie/features/watched%20list/presentation/views/watched_list_view.dart';
+import 'package:movie/models/movie_model.dart';
 
 class HomeLayoutCubit extends Cubit<HomeLayoutState> {
   HomeLayoutCubit() : super(HomeLayoutIntialState());
@@ -41,8 +42,8 @@ class HomeLayoutCubit extends Cubit<HomeLayoutState> {
   ];
 
   Set<String> favItemsID = {};
-  Set<dynamic> favRecomendList = {};
-  // List<dynamic> favRecomendList = [];
+  // Set<MovieModel> favRecomendList = {};
+  List<MovieModel> favRecomendList = [];
 
   changeWatchList(String id, {required model}) {
     if (favItemsID.contains(id)) {

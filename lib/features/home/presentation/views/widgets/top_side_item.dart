@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movie/core/utils/constants.dart';
 import 'package:movie/core/widget/custom_cached_network_image.dart';
-import 'package:movie/features/home/data/model/popular_model.dart';
+import 'package:movie/models/movie_model.dart';
 
 import '../../../../../core/utils/color.dart';
 
 class TopSideItem extends StatelessWidget {
   final void Function() onTap;
-  final PopularModel model;
+  final MovieModel model;
   final int index;
   final bool checked;
   const TopSideItem(

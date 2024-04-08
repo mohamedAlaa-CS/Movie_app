@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:movie/features/home/data/model/recomend_model.dart';
 import 'package:movie/features/home/data/repos/home%20repo/home_repo.dart';
+import 'package:movie/models/movie_model.dart';
 
 part 'recomend_state.dart';
 
@@ -11,7 +11,7 @@ class RecomendCubit extends Cubit<RecomendState> {
   static RecomendCubit get(context) => BlocProvider.of<RecomendCubit>(context);
 
   //! featch recomend movie
-  List<RecomendModel> recomendMovieList = [];
+  List<MovieModel> recomendMovieList = [];
 
   featchRecomendMovie() async {
     emit(RecomendLoading());

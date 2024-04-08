@@ -22,8 +22,9 @@ class WatchListViewUi extends StatelessWidget {
               endIndent: 10.w,
               indent: 10.w,
             ),
-            itemBuilder: (context, index) => const WatchListListViewItem(),
-            itemCount: cubit.favItemsID.length,
+            itemBuilder: (context, index) =>
+                WatchListListViewItem(model: cubit.favRecomendList[index]),
+            itemCount: cubit.favRecomendList.length,
           ),
         );
       },

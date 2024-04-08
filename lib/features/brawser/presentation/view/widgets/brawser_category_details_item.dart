@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movie/core/utils/constants.dart';
 import 'package:movie/core/widget/custom_cached_network_image.dart';
-import 'package:movie/features/search/data/models/search_model.dart';
+import 'package:movie/models/movie_model.dart';
 
 class BrawserCategoryDetailsItem extends StatelessWidget {
   const BrawserCategoryDetailsItem({
     super.key,
     required this.model,
   });
-  final SearchModel model;
+  final MovieModel model;
   @override
   Widget build(BuildContext context) {
     var media = MediaQuery.of(context).size;

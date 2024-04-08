@@ -1,4 +1,4 @@
-import 'package:movie/features/search/data/models/search_model.dart';
+import 'package:movie/models/movie_model.dart';
 
 class SearchState {}
 
@@ -13,7 +13,7 @@ final class SearchFailuer extends SearchState {
 }
 
 final class SearchSuccess extends SearchState {
-  final List<SearchModel> searchData;
+  final List<MovieModel> searchData;
 
   SearchSuccess(this.searchData);
 }
@@ -27,7 +27,7 @@ final class CategorySearchFailuer extends SearchState {
 }
 
 final class CategorySearchSuccess extends SearchState {
-  final List<SearchModel> searchData;
+  final List<MovieModel> searchData;
 
   CategorySearchSuccess(this.searchData);
 }

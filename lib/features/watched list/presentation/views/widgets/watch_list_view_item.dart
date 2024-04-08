@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:movie/core/utils/constants.dart';
 import 'package:movie/core/widget/custom_cached_network_image.dart';
+import 'package:movie/features/home%20layout/presentation/manager/home_layout_cubit.dart';
+import 'package:movie/features/home%20layout/presentation/manager/home_layout_state.dart';
+import 'package:movie/models/movie_model.dart';
 
 class WatchListListViewItem extends StatelessWidget {
-  const WatchListListViewItem({super.key});
-
+  const WatchListListViewItem({super.key, required this.model});
+  final MovieModel model;
   @override
   Widget build(BuildContext context) {
     var media = MediaQuery.of(context).size;
@@ -14,11 +19,15 @@ class WatchListListViewItem extends StatelessWidget {
         children: [
           Row(
             children: [
-              CustomCachedNetworkImage(
+              FittedBox(
+                fit: BoxFit.cover,
+                child: CustomCachedNetworkImage(
                   imageUrl:
-                      'https://images.pexels.com/photos/268533/pexels-photo-268533.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
-                  height: 89.h,
-                  width: media.width / 3.1),
+                      '$apiImage${model.backdropPath ?? model.posterPath}',
+                  height: 100.h,
+                  width: media.width / 3.1,
+                ),
+              ),
               SizedBox(
                 width: media.width / 35,
               ),
@@ -28,16 +37,16 @@ class WatchListListViewItem extends StatelessWidget {
                   SizedBox(
                     width: media.width / 2,
                     child: Text(
-                      'hello',
+                      model.title ?? '',
                       style: TextStyle(
                           fontSize: 15.sp, fontWeight: FontWeight.w500),
-                      maxLines: 2,
+                      maxLines: 3,
                       overflow: TextOverflow.ellipsis,
                     ),
                   ),
                   SizedBox(height: media.height / 110),
                   Text(
-                    'hello',
+                    model.releaseDate ?? '',
                     style: TextStyle(fontSize: 12.sp),
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
@@ -46,7 +55,7 @@ class WatchListListViewItem extends StatelessWidget {
                   SizedBox(
                     width: media.width / 2,
                     child: Text(
-                      'hello',
+                      'language: ${model.originalLanguage ?? ''}',
                       style: TextStyle(fontSize: 12.sp),
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
@@ -57,14 +66,30 @@ class WatchListListViewItem extends StatelessWidget {
             ],
           ),
           const Image(image: AssetImage('assets/images/bookmark_add.png')),
-          Positioned(
-            left: 2.w,
-            top: 2.h,
-            child: Icon(
-              Icons.check,
-              color: Colors.white,
-              size: 20.sp,
-            ),
+          BlocConsumer<HomeLayoutCubit, HomeLayoutState>(
+            listener: (context, state) {},
+            builder: (context, state) {
+              var homeCubit = HomeLayoutCubit.get(context);
+              return InkWell(
+                onTap: () {
+                  HomeLayoutCubit.get(context).changeWatchList(
+                    model.id.toString(),
+                    model: model,
+                  );
+                },
+                child: Positioned(
+                  left: 4.w,
+                  top: 3.h,
+                  child: Icon(
+                    homeCubit.favItemsID.contains(model.id.toString())
+                        ? Icons.check
+                        : Icons.add,
+                    color: Colors.white,
+                    size: 20.sp,
+                  ),
+                ),
+              );
+            },
           )
         ],
       ),

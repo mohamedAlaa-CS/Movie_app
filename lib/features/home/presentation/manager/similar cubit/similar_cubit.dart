@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:movie/features/home/data/model/similar_movie.dart';
 import 'package:movie/features/home/data/repos/home%20details%20repo/home_details_repo.dart';
+import 'package:movie/models/movie_model.dart';
 
 part 'similar_state.dart';
 
@@ -25,7 +25,7 @@ class SimilarCubit extends Cubit<SimilarState> {
   // }
 
   //! featch similar movie list
-  List<SimilarMovieModel> similarMovieList = [];
+  List<MovieModel> similarMovieList = [];
 
   featchSimailar({required int id}) async {
     emit(SimilarLoading());

@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:movie/features/home/data/model/popular_model.dart';
 import 'package:movie/features/home/data/repos/home%20repo/home_repo.dart';
+import 'package:movie/models/movie_model.dart';
 
 part 'popular_movie_state.dart';
 
@@ -24,7 +24,7 @@ class PopularMovieCubit extends Cubit<PopularMovieState> {
   }
 
 //! featch popular movie
-  List<PopularModel> popularMovieList = [];
+  List<MovieModel> popularMovieList = [];
 
   fetchPopularMovie() async {
     emit(PopularMovieLoading());

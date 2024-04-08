@@ -2,23 +2,23 @@ import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:movie/core/errors/failure.dart';
 import 'package:movie/core/utils/api_service.dart';
-import 'package:movie/features/search/data/models/search_model.dart';
 import 'package:movie/features/search/data/repos/search_repo.dart';
+import 'package:movie/models/movie_model.dart';
 
 class SearchRepoImple implements SearchRepo {
   final ApiService apiService;
 
   SearchRepoImple(this.apiService);
   @override
-  Future<Either<Failure, List<SearchModel>>> featchSearch(
+  Future<Either<Failure, List<MovieModel>>> featchSearch(
       {required String query}) async {
     try {
       var data = await apiService.get(
           endPoint:
               'search/movie?api_key=8b104227bc3518198c861fdf19a3b565&query=$query');
-      List<SearchModel> searchMovieList = [];
+      List<MovieModel> searchMovieList = [];
       for (var item in data['results']) {
-        searchMovieList.add(SearchModel.fromJson(item));
+        searchMovieList.add(MovieModel.fromJson(item));
       }
       return right(searchMovieList);
     } catch (e) {

@@ -1,7 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:movie/features/search/data/models/search_model.dart';
 import 'package:movie/features/search/data/repos/search_repo.dart';
 import 'package:movie/features/search/presentation/manager/search%20cubit/search_state.dart';
+import 'package:movie/models/movie_model.dart';
 
 class SearchCubit extends Cubit<SearchState> {
   SearchCubit(this.searchRepo) : super(SearchInitial());
@@ -9,7 +9,7 @@ class SearchCubit extends Cubit<SearchState> {
   static SearchCubit get(context) => BlocProvider.of(context);
 
   //! featch search data
-  List<SearchModel> searchData = [];
+  List<MovieModel> searchData = [];
 
   featchSearch({required String query}) async {
     emit(SearchLoading());
@@ -24,7 +24,7 @@ class SearchCubit extends Cubit<SearchState> {
   }
 
   //! featch Category search data
-  List<SearchModel> categorySearchData = [];
+  List<MovieModel> categorySearchData = [];
 
   featchCategorySearch({required String query}) async {
     emit(CategorySearchLoading());

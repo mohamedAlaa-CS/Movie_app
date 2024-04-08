@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movie/core/utils/color.dart';
 import 'package:movie/core/widget/custom_cached_network_image.dart';
-import 'package:movie/features/home/data/model/new.model.dart';
+import 'package:movie/models/movie_model.dart';
 
 import '../../../../../core/utils/constants.dart';
 
 class NewsRelaseListViewItem extends StatelessWidget {
   final bool checked;
-  final NewModel model;
+  final MovieModel model;
   final int index;
   final void Function() onTap;
   const NewsRelaseListViewItem(
